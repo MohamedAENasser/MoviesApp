@@ -7,17 +7,18 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class HomeScreenViewModel {
-    var moviesService: MoviesServiceProtocol
+    var service: HomeScreenServiceProtocol
     @Published var moviesList: [Movie] = []
 
-    init(moviesService: MoviesServiceProtocol = MoviesService()) {
-        self.moviesService = moviesService
+    init(service: HomeScreenServiceProtocol = HomeScreenService()) {
+        self.service = service
     }
 
     func getMovies() async {
-        let result = await moviesService.getMovies()
+        let result = await service.getMovies()
         switch result {
         case .success(let list):
             moviesList = list

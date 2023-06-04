@@ -1,5 +1,5 @@
 //
-//  MoviesService.swift
+//  HomeScreenService.swift
 //  MoviesApp
 //
 //  Created by Mohamed Abd ElNasser on 02/06/2023.
@@ -8,18 +8,12 @@
 import Foundation
 import Moya
 
-protocol MoviesServiceProtocol {
-    var provider: MoyaProvider<MoviesTarget> { get set }
-
+protocol HomeScreenServiceProtocol: MainServiceProtocol {
     func getMovies() async -> Result<[Movie], AppError>
+    func getImageURL(at path: String) async -> Result<String, AppError>
 }
 
-final class MoviesService: MoviesServiceProtocol {
-    var provider: MoyaProvider<MoviesTarget>
-
-    init(provider: MoyaProvider<MoviesTarget> = MoyaProvider<MoviesTarget>()) {
-        self.provider = provider
-    }
+final class HomeScreenService: MainService, HomeScreenServiceProtocol {
 
     func getMovies() async -> Result<[Movie], AppError> {
         return await withCheckedContinuation { continuation in
@@ -42,4 +36,13 @@ final class MoviesService: MoviesServiceProtocol {
             }
         }
     }
+
+    func getImageURL(at path: String) async -> Result<String, AppError> {
+        if let error = await setupConfigurationIfNeeded() {
+            return .failure(error)
+        }
+
+        return .success(MoviesTarget.imagesBaseURL.appending(path))
+    }
+
 }

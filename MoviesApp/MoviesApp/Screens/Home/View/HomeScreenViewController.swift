@@ -11,7 +11,7 @@ import Combine
 class HomeScreenViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
-    var viewModel: HomeScreenViewModel = HomeScreenViewModel()
+    let viewModel: HomeScreenViewModel = HomeScreenViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,23 +21,28 @@ class HomeScreenViewController: UIViewController {
         getMovies()
     }
 
-    func registerCells() {
+    private func registerCells() {
         collectionView.register(HomeScreenEnlargedCell.self)
     }
 
-    func getMovies() {
+    private func getMovies() {
         Task {
             await viewModel.getMovies()
         }
     }
-    func setupBindings() {
+    var count = 0
+    private func setupBindings() {
         viewModel.$moviesList.subscribe(Subscribers.Sink(
             receiveCompletion: { _ in },
-            receiveValue: { result in
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
+            receiveValue: { _ in
+                self.reloadCollectionData()
             })
         )
+    }
+
+    private func reloadCollectionData(index: Int? = nil) {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
 }

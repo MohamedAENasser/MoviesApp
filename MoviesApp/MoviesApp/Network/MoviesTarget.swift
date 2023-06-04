@@ -9,8 +9,10 @@ import Moya
 
 enum MoviesTarget {
     static private let apiKey = "API_KEY"
+    static var imagesBaseURL = ""
 
     case moviesList
+    case configuration
 }
 
 extension MoviesTarget: TargetType {
@@ -20,6 +22,8 @@ extension MoviesTarget: TargetType {
         case .moviesList:
             return URL(string: "https://api.themoviedb.org/3/discover")!
 
+        case .configuration:
+            return URL(string: "https://api.themoviedb.org/3/configuration")!
         }
     }
 
@@ -29,13 +33,15 @@ extension MoviesTarget: TargetType {
         case .moviesList:
             return "/movie"
 
+        case .configuration:
+            return ""
         }
     }
 
     var method: Moya.Method {
         switch self {
 
-        case .moviesList:
+        default:
             return .get
 
         }
@@ -44,7 +50,7 @@ extension MoviesTarget: TargetType {
     var task: Moya.Task {
         switch self {
 
-        case .moviesList:
+        default:
             return .requestParameters(parameters: [
                 "api_key" : MoviesTarget.apiKey
             ], encoding: URLEncoding.queryString)

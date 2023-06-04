@@ -15,10 +15,10 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: HomeScreenEnlargedCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
 
-        // TODO: configure cell
-        if let model = viewModel.movie(at: indexPath.row) {
-            cell.configure(with: model)
+        guard let model = viewModel.movie(at: indexPath.row) else {
+            return cell
         }
+        cell.configure(with: model)
 
         return cell
     }
