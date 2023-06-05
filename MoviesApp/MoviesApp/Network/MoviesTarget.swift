@@ -13,6 +13,7 @@ enum MoviesTarget {
 
     case moviesList
     case configuration
+    case movieDetails(_ id: String)
 }
 
 extension MoviesTarget: TargetType {
@@ -24,6 +25,9 @@ extension MoviesTarget: TargetType {
 
         case .configuration:
             return URL(string: "https://api.themoviedb.org/3/configuration")!
+
+        case .movieDetails:
+            return URL(string: "https://api.themoviedb.org/3/movie")!
         }
     }
 
@@ -35,6 +39,9 @@ extension MoviesTarget: TargetType {
 
         case .configuration:
             return ""
+
+        case .movieDetails(let id):
+            return "/\(id)"
         }
     }
 

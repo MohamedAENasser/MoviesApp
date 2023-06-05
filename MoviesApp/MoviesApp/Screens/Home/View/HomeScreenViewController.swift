@@ -30,7 +30,7 @@ class HomeScreenViewController: UIViewController {
             await viewModel.getMovies()
         }
     }
-    var count = 0
+
     private func setupBindings() {
         viewModel.$moviesList.subscribe(Subscribers.Sink(
             receiveCompletion: { _ in },

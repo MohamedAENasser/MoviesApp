@@ -23,6 +23,13 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let movieID = viewModel.movieID(at: indexPath.row) else { return }
+        let movieDetailsViewController = MovieDetailsViewController(movieID: movieID)
+
+        navigationController?.pushViewController(movieDetailsViewController, animated: true)
+    }
+
     // MARK: - Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let space: CGFloat = 16
