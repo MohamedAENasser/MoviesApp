@@ -12,6 +12,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var genresStackView: UIStackView!
     @IBOutlet weak var movieImageView: UIImageView!
+    @IBOutlet weak var movieImageShimmerContainerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var originalTitleLabel: UILabel!
     @IBOutlet weak var originalTitleLabelHeightConstraint: NSLayoutConstraint!
@@ -65,6 +66,11 @@ class MovieDetailsViewController: UIViewController {
     }
 
     private func setupShimmer() {
+        let imageShimmer = ShimmerView()
+        movieImageShimmerContainerView.addSubview(imageShimmer)
+        imageShimmer.fill(in: movieImageShimmerContainerView)
+        imageShimmer.startAnimating()
+
         containerView.addSubview(shimmerView)
         shimmerView.fill(in: containerView)
     }
@@ -87,7 +93,10 @@ class MovieDetailsViewController: UIViewController {
         viewModel?.$image.subscribe(Subscribers.Sink(
             receiveCompletion: { _ in },
             receiveValue: { image in
+                guard let image else { return }
                 DispatchQueue.main.async {
+                    self.movieImageShimmerContainerView.subviews.forEach { $0.removeFromSuperview() }
+                    self.movieImageShimmerContainerView.isHidden = true
                     self.movieImageView.image = image
                 }
             })

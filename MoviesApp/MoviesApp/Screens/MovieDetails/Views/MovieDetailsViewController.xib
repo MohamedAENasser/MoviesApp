@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="containerView" destination="47p-qh-nLo" id="3IB-Hb-WUg"/>
                 <outlet property="genresStackView" destination="AgE-qS-WJw" id="o29-JF-WAl"/>
+                <outlet property="movieImageShimmerContainerView" destination="ye0-4k-BfU" id="5rR-8J-ZEe"/>
                 <outlet property="movieImageView" destination="I2f-Fg-VtO" id="niv-mX-W9t"/>
                 <outlet property="originalTitleLabel" destination="BdQ-z3-DGS" id="YOs-CW-Vkw"/>
                 <outlet property="originalTitleLabelHeightConstraint" destination="MKD-JD-JU5" id="Mz5-kA-Pju"/>
@@ -40,6 +41,10 @@
                                         <constraint firstAttribute="width" secondItem="I2f-Fg-VtO" secondAttribute="height" multiplier="2:3" id="EmB-93-SPY"/>
                                     </constraints>
                                 </imageView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ye0-4k-BfU">
+                                    <rect key="frame" x="59" y="69.000000000000028" width="275" height="412.66666666666674"/>
+                                    <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kAv-pa-7CA" userLabel="Separator View">
                                     <rect key="frame" x="16" y="501.66666666666669" width="361" height="1"/>
                                     <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
@@ -98,8 +103,11 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="Meq-GF-9qZ" firstAttribute="top" secondItem="TUf-cT-ecW" secondAttribute="bottom" constant="20" id="0DB-xw-5xl"/>
+                                <constraint firstItem="ye0-4k-BfU" firstAttribute="top" secondItem="I2f-Fg-VtO" secondAttribute="top" id="46V-Am-XNb"/>
                                 <constraint firstItem="gvi-P9-eMA" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oUs-3m-HdC" secondAttribute="trailing" constant="16" id="6Cs-8d-RHp"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Meq-GF-9qZ" secondAttribute="bottom" constant="16" id="89g-eR-YyI"/>
+                                <constraint firstItem="ye0-4k-BfU" firstAttribute="bottom" secondItem="I2f-Fg-VtO" secondAttribute="bottom" id="CI3-qp-zhq"/>
+                                <constraint firstItem="ye0-4k-BfU" firstAttribute="trailing" secondItem="I2f-Fg-VtO" secondAttribute="trailing" id="DCO-fH-Acb"/>
                                 <constraint firstItem="e0n-ql-1gj" firstAttribute="leading" secondItem="gYv-ae-9F5" secondAttribute="trailing" constant="30" id="Exj-e9-HbM"/>
                                 <constraint firstItem="I2f-Fg-VtO" firstAttribute="width" secondItem="47p-qh-nLo" secondAttribute="width" multiplier="0.7" id="JJ3-au-ZcE"/>
                                 <constraint firstItem="kAv-pa-7CA" firstAttribute="leading" secondItem="47p-qh-nLo" secondAttribute="leading" constant="16" id="LJ1-wv-5c8"/>
@@ -121,6 +129,7 @@
                                 <constraint firstItem="AgE-qS-WJw" firstAttribute="top" secondItem="BdQ-z3-DGS" secondAttribute="bottom" constant="10" id="lTx-dY-WOW"/>
                                 <constraint firstItem="Meq-GF-9qZ" firstAttribute="leading" secondItem="oUs-3m-HdC" secondAttribute="leading" id="lVx-We-tgq"/>
                                 <constraint firstItem="BdQ-z3-DGS" firstAttribute="leading" secondItem="oUs-3m-HdC" secondAttribute="leading" id="lkH-2C-FMp"/>
+                                <constraint firstItem="ye0-4k-BfU" firstAttribute="leading" secondItem="I2f-Fg-VtO" secondAttribute="leading" id="o9n-FY-ypF"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Meq-GF-9qZ" secondAttribute="trailing" constant="16" id="raS-J2-CEW"/>
                                 <constraint firstItem="TUf-cT-ecW" firstAttribute="top" secondItem="AgE-qS-WJw" secondAttribute="bottom" constant="10" id="wcm-XD-a3D"/>
                                 <constraint firstItem="I2f-Fg-VtO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="47p-qh-nLo" secondAttribute="leading" constant="10" id="x4m-m5-6Iw"/>
