@@ -9,14 +9,14 @@ import Foundation
 import Moya
 
 protocol HomeScreenServiceProtocol: MainServiceProtocol {
-    func getMovies() async -> Result<[Movie], AppError>
+    func getMovies(page: Int) async -> Result<[Movie], AppError>
 }
 
 final class HomeScreenService: MainService, HomeScreenServiceProtocol {
 
-    func getMovies() async -> Result<[Movie], AppError> {
+    func getMovies(page: Int) async -> Result<[Movie], AppError> {
         return await withCheckedContinuation { continuation in
-            provider.request(.moviesList) { result in
+            provider.request(.moviesList(page)) { result in
 
                 switch result {
 

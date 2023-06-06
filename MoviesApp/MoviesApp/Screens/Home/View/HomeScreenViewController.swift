@@ -16,13 +16,19 @@ class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupUI()
         registerCells()
         setupBindings()
         getMovies()
     }
 
+    private func setupUI() {
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
+    }
+
     private func registerCells() {
         collectionView.register(HomeScreenEnlargedCell.self)
+        collectionView.register(LoadingCell.self)
     }
 
     private func getMovies() {

@@ -11,7 +11,7 @@ enum MoviesTarget {
     static private let apiKey = "API_KEY"
     static var imagesBaseURL = ""
 
-    case moviesList
+    case moviesList(_ page: Int)
     case configuration
     case movieDetails(_ id: String)
 }
@@ -60,8 +60,8 @@ extension MoviesTarget: TargetType {
         ]
         switch self {
 
-        case .moviesList:
-            // TODO: pages handling
+        case .moviesList(let page):
+            parameters["page"] = page
         default:
             break
 

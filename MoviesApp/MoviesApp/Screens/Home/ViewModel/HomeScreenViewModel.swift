@@ -11,6 +11,8 @@ import UIKit
 
 class HomeScreenViewModel {
     private var service: HomeScreenServiceProtocol
+    private var currentPage = 1
+    private var isLoading = false
     @Published var moviesList: [Movie] = []
 
     init(service: HomeScreenServiceProtocol = HomeScreenService()) {
@@ -18,13 +20,22 @@ class HomeScreenViewModel {
     }
 
     func getMovies() async {
-        let result = await service.getMovies()
+        let result = await service.getMovies(page: currentPage)
         switch result {
         case .success(let list):
-            moviesList = list
+            moviesList.append(contentsOf: list)
         case .failure:
             break // TODO: Error Handling
         }
+        isLoading = false
+    }
+
+    func loadMoreMovies() async {
+        if isLoading { return }
+
+        isLoading = true
+        currentPage += 1
+        await getMovies()
     }
 
     func numberOfItems() -> Int {

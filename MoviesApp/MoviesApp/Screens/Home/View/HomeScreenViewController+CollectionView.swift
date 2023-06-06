@@ -9,10 +9,15 @@ import UIKit
 
 extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.numberOfItems()
+        viewModel.numberOfItems() + 1 // The extra one is for loading cell
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard indexPath.row != viewModel.numberOfItems() else {
+            let loadingCell: LoadingCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            return loadingCell
+        }
+
         let cell: HomeScreenEnlargedCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
 
         guard let model = viewModel.movie(at: indexPath.row) else {
@@ -28,6 +33,14 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         let movieDetailsViewController = MovieDetailsViewController(movieModel: movieModel)
 
         navigationController?.pushViewController(movieDetailsViewController, animated: true)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.numberOfItems() {
+            Task {
+                await viewModel.loadMoreMovies()
+            }
+        }
     }
 
     // MARK: - Layout
