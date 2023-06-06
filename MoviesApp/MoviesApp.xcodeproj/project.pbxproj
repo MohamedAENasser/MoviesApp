@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF3C73C22A2F6F33000EDDD4 /* PosterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3C73C12A2F6F33000EDDD4 /* PosterModel.swift */; };
 		CFC75AFB2A2CE3D300D7F86D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC75AFA2A2CE3D300D7F86D /* AppDelegate.swift */; };
 		CFC75AFD2A2CE3D300D7F86D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC75AFC2A2CE3D300D7F86D /* SceneDelegate.swift */; };
 		CFC75B042A2CE3D500D7F86D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC75B032A2CE3D500D7F86D /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		9C567061233D2C8181A1CD38 /* Pods-MoviesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesApp.debug.xcconfig"; path = "Target Support Files/Pods-MoviesApp/Pods-MoviesApp.debug.xcconfig"; sourceTree = "<group>"; };
+		CF3C73C12A2F6F33000EDDD4 /* PosterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterModel.swift; sourceTree = "<group>"; };
 		CFC75AF72A2CE3D300D7F86D /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC75AFA2A2CE3D300D7F86D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFC75AFC2A2CE3D300D7F86D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				CFC75B112A2CE46700D7F86D /* MoviesResponse.swift */,
 				CFC75B422A2CEBEF00D7F86D /* ConfigurationModel.swift */,
 				CFC75B5F2A2E8D2900D7F86D /* MovieDetails.swift */,
+				CF3C73C12A2F6F33000EDDD4 /* PosterModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				CFC75B292A2CE63100D7F86D /* Collection+SafeAccess.swift in Sources */,
 				CFC75B5C2A2E8CB500D7F86D /* MovieDetailsViewModel.swift in Sources */,
 				CFC75AFD2A2CE3D300D7F86D /* SceneDelegate.swift in Sources */,
+				CF3C73C22A2F6F33000EDDD4 /* PosterModel.swift in Sources */,
 				CFC75B652A2EB4F000D7F86D /* LoadingCell.swift in Sources */,
 				CFC75B452A2CFAA800D7F86D /* MainService.swift in Sources */,
 				CFC75B412A2CE9EF00D7F86D /* HomeScreenCellViewModel.swift in Sources */,

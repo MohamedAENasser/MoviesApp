@@ -31,7 +31,7 @@ class MovieDetailsViewModel {
             switch result {
             case .success(let model):
                 detailsModel = model
-                requestImage()
+                requestImage(resolution: .original)
             case .failure:
                 break // TODO: Error Handling
             }
@@ -58,10 +58,10 @@ class MovieDetailsViewModel {
         Array(detailsModel?.genres.prefix(3) ?? [])
     }
 
-    func requestImage() {
+    func requestImage(resolution: PosterModel.Resoultion) {
         Task {
             guard let path = movieModel.posterPath else { return }
-            let result = await service.getImageURL(at: path)
+            let result = await service.getImageURL(at: path, resolution: resolution)
             switch result {
             case .success(let urlString):
                 imageURLString = urlString

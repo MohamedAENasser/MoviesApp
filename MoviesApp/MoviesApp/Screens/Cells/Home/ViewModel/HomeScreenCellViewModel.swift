@@ -50,7 +50,7 @@ class HomeScreenCellViewModel {
     func requestImage() {
         guard let path = model.posterPath else { return }
         Task {
-            let result = await service.getImageURL(at: path)
+            let result = await service.getImageURL(at: path, resolution: .low)
             switch result {
             case .success(let urlString):
                 imageURLString = urlString

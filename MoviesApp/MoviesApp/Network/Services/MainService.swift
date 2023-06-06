@@ -11,20 +11,22 @@ import Moya
 protocol MainServiceProtocol {
     var provider: MoyaProvider<MoviesTarget> { get set }
 
-    func setupConfigurationIfNeeded() async -> AppError?
-    func getImageURL(at path: String) async -> Result<String, AppError>
+    func setupConfigurationIfNeeded(resolution: PosterModel.Resoultion) async -> AppError?
+    func getImageURL(at path: String, resolution: PosterModel.Resoultion) async -> Result<String, AppError>
 }
 
 class MainService: MainServiceProtocol {
     var provider: MoyaProvider<MoviesTarget>
 
+    private static var posterBaseURL: PosterModel?
+
     init(provider: MoyaProvider<MoviesTarget> = MoyaProvider<MoviesTarget>()) {
         self.provider = provider
     }
 
-    func setupConfigurationIfNeeded() async -> AppError? {
+    func setupConfigurationIfNeeded(resolution: PosterModel.Resoultion) async -> AppError? {
         return await withCheckedContinuation { continuation in
-            guard MoviesTarget.imagesBaseURL.isEmpty else {
+            guard MainService.posterBaseURL == nil else {
                 return continuation.resume(returning: nil)
             }
 
@@ -35,7 +37,14 @@ class MainService: MainServiceProtocol {
                 case .success(let response):
                     do {
                         let configurationModel = try response.map(ConfigurationModel.self)
-                        MoviesTarget.imagesBaseURL = (configurationModel.images.baseURL ?? "").appending("original/") // original can be updated with any of provided sizes in `configurationModel.images.posterSizes` if needed
+                        let originalPath = configurationModel.images.posterSizes?.last ?? "original"
+                        MainService.posterBaseURL = PosterModel(
+                            baseURL: configurationModel.images.baseURL ?? "",
+                            lowResolutionPath: configurationModel.images.posterSizes?[safe: 2] ?? originalPath,
+                            hightResolutionPath: configurationModel.images.posterSizes?[safe: 4] ?? originalPath,
+                            originalResolutionPath: originalPath
+                        )
+
                         return continuation.resume(returning: nil)
                     } catch {
                         return continuation.resume(returning: .failedToParseData)
@@ -50,11 +59,14 @@ class MainService: MainServiceProtocol {
         }
     }
 
-    func getImageURL(at path: String) async -> Result<String, AppError> {
-        if let error = await setupConfigurationIfNeeded() {
+    func getImageURL(at path: String, resolution: PosterModel.Resoultion) async -> Result<String, AppError> {
+        if let error = await setupConfigurationIfNeeded(resolution: resolution) {
             return .failure(error)
         }
+        guard let baseURL = MainService.posterBaseURL?.getBaseURL(for: resolution) else {
+            return .failure(.failedToLoadData)
+        }
 
-        return .success(MoviesTarget.imagesBaseURL.appending(path))
+        return .success(baseURL.appending(path))
     }
 }

@@ -9,7 +9,6 @@ import Moya
 
 enum MoviesTarget {
     static private let apiKey = "API_KEY"
-    static var imagesBaseURL = ""
 
     case moviesList(_ page: Int)
     case configuration
