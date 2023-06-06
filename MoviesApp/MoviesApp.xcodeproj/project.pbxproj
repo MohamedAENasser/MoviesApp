@@ -13,6 +13,8 @@
 		CF5CB22A2A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5CB2282A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.xib */; };
 		CF5CB22C2A2FD61200ECC21E /* UIView+FillInParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB22B2A2FD61200ECC21E /* UIView+FillInParent.swift */; };
 		CF5CB22E2A2FE97B00ECC21E /* AppStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB22D2A2FE97B00ECC21E /* AppStatus.swift */; };
+		CF5CB2312A2FECF300ECC21E /* MovieDetailsShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB2302A2FECF300ECC21E /* MovieDetailsShimmerView.swift */; };
+		CF5CB2332A2FED0000ECC21E /* MovieDetailsShimmerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5CB2322A2FED0000ECC21E /* MovieDetailsShimmerView.xib */; };
 		CFC75AFB2A2CE3D300D7F86D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC75AFA2A2CE3D300D7F86D /* AppDelegate.swift */; };
 		CFC75AFD2A2CE3D300D7F86D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC75AFC2A2CE3D300D7F86D /* SceneDelegate.swift */; };
 		CFC75B042A2CE3D500D7F86D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC75B032A2CE3D500D7F86D /* Assets.xcassets */; };
@@ -55,6 +57,8 @@
 		CF5CB2282A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreenEnlargedShimmerCell.xib; sourceTree = "<group>"; };
 		CF5CB22B2A2FD61200ECC21E /* UIView+FillInParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FillInParent.swift"; sourceTree = "<group>"; };
 		CF5CB22D2A2FE97B00ECC21E /* AppStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStatus.swift; sourceTree = "<group>"; };
+		CF5CB2302A2FECF300ECC21E /* MovieDetailsShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsShimmerView.swift; sourceTree = "<group>"; };
+		CF5CB2322A2FED0000ECC21E /* MovieDetailsShimmerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailsShimmerView.xib; sourceTree = "<group>"; };
 		CFC75AF72A2CE3D300D7F86D /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC75AFA2A2CE3D300D7F86D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFC75AFC2A2CE3D300D7F86D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +138,15 @@
 			children = (
 				CF5CB2272A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.swift */,
 				CF5CB2282A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.xib */,
+			);
+			path = Shimmer;
+			sourceTree = "<group>";
+		};
+		CF5CB22F2A2FEC9800ECC21E /* Shimmer */ = {
+			isa = PBXGroup;
+			children = (
+				CF5CB2302A2FECF300ECC21E /* MovieDetailsShimmerView.swift */,
+				CF5CB2322A2FED0000ECC21E /* MovieDetailsShimmerView.xib */,
 			);
 			path = Shimmer;
 			sourceTree = "<group>";
@@ -304,6 +317,7 @@
 		CFC75B4A2A2E3DF600D7F86D /* MovieDetails */ = {
 			isa = PBXGroup;
 			children = (
+				CF5CB22F2A2FEC9800ECC21E /* Shimmer */,
 				CFC75B592A2E8C9800D7F86D /* Views */,
 				CFC75B5A2A2E8CA300D7F86D /* ViewModel */,
 			);
@@ -398,6 +412,7 @@
 			files = (
 				CFC75B072A2CE3D500D7F86D /* LaunchScreen.storyboard in Resources */,
 				CFC75B3C2A2CE63A00D7F86D /* HomeScreenEnlargedCell.xib in Resources */,
+				CF5CB2332A2FED0000ECC21E /* MovieDetailsShimmerView.xib in Resources */,
 				CFC75B3A2A2CE63A00D7F86D /* HomeScreen.storyboard in Resources */,
 				CFC75B042A2CE3D500D7F86D /* Assets.xcassets in Resources */,
 				CF5CB22A2A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.xib in Resources */,
@@ -468,6 +483,7 @@
 				CFC75AFB2A2CE3D300D7F86D /* AppDelegate.swift in Sources */,
 				CFC75B282A2CE63100D7F86D /* UICollectionViewCell+ReusableView.swift in Sources */,
 				CFC75B602A2E8D2900D7F86D /* MovieDetails.swift in Sources */,
+				CF5CB2312A2FECF300ECC21E /* MovieDetailsShimmerView.swift in Sources */,
 				CFC75B492A2D450200D7F86D /* ImageLoader.swift in Sources */,
 				CFC75B382A2CE63A00D7F86D /* HomeScreenViewModel.swift in Sources */,
 				CFC75B432A2CEBEF00D7F86D /* ConfigurationModel.swift in Sources */,

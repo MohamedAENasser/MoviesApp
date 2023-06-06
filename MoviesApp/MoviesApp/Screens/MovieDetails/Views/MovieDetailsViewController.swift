@@ -20,6 +20,9 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var releaseDataLabel: UILabel!
 
     var viewModel: MovieDetailsViewModel?
+    lazy var shimmerView: MovieDetailsShimmerView = {
+        Bundle.main.loadNibNamed("MovieDetailsShimmerView", owner: nil)?.first as? MovieDetailsShimmerView ?? MovieDetailsShimmerView(frame: .zero)
+    }()
 
     init(movieModel: Movie) {
         super.init(nibName: Constants.NibNames.movieDetailsViewController, bundle: .main)
@@ -38,8 +41,10 @@ class MovieDetailsViewController: UIViewController {
         viewModel?.loadDetails()
     }
 
-    private func setupUI() {
+    private func setupSuccessUI() {
         DispatchQueue.main.async {
+            self.shimmerView.removeFromSuperview()
+
             guard let viewModel = self.viewModel else { return }
 
             self.titleLabel.text =  viewModel.getTitle()
@@ -59,12 +64,22 @@ class MovieDetailsViewController: UIViewController {
         }
     }
 
+    private func setupShimmer() {
+        containerView.addSubview(shimmerView)
+        shimmerView.fill(in: containerView)
+    }
+
     private func setupBindings() {
-        viewModel?.$detailsModel.subscribe(Subscribers.Sink(
+        viewModel?.$status.subscribe(Subscribers.Sink(
             receiveCompletion: { _ in },
-            receiveValue: { [weak self] _ in
+            receiveValue: { [weak self] status in
                 guard let self else { return }
-                self.setupUI()
+                switch status {
+                case .loading:
+                    self.setupShimmer()
+                case .success:
+                    self.setupSuccessUI()
+                }
             })
         )
 

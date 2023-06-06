@@ -14,7 +14,8 @@ class MovieDetailsViewModel {
     private var service: MovieDetailsServiceProtocol
     private var imageLoader: ImageLoader
     private var imageURLString = ""
-    @Published var detailsModel: MovieDetails?
+    private var detailsModel: MovieDetails?
+    @Published  var status: AppStatus<MovieDetails> = .loading
     @Published var image: UIImage?
 
     init(movieModel: Movie, service: MovieDetailsServiceProtocol = MovieDetailsService(), imageLoader: ImageLoader = ImageLoader()) {
@@ -31,6 +32,7 @@ class MovieDetailsViewModel {
             switch result {
             case .success(let model):
                 detailsModel = model
+                status = .success(model)
                 requestImage(resolution: .original)
             case .failure:
                 break // TODO: Error Handling
