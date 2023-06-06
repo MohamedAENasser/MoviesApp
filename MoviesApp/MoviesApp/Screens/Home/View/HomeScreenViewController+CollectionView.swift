@@ -20,13 +20,13 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         }
     }
 
-    private func getHomeScreenEnlargedCell(at indexPath: IndexPath) -> HomeScreenEnlargedCell {
-        let cell: HomeScreenEnlargedCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+    private func getHomeScreenEnlargedCell(at indexPath: IndexPath) -> HomeScreenEnlargedShimmerCell {
+        let cell: HomeScreenEnlargedShimmerCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
 
-        guard let model = viewModel.movie(at: indexPath.row) else {
-            return cell
-        }
-        cell.configure(with: model)
+//        guard let model = viewModel.movie(at: indexPath.row) else {
+//            return cell
+//        }
+//        cell.configure(with: model)
 
         return cell
     }
