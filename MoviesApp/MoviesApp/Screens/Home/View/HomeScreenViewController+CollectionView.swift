@@ -24,8 +24,8 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let movieID = viewModel.movieID(at: indexPath.row) else { return }
-        let movieDetailsViewController = MovieDetailsViewController(movieID: movieID)
+        guard let movieModel = viewModel.movie(at: indexPath.row) else { return }
+        let movieDetailsViewController = MovieDetailsViewController(movieModel: movieModel)
 
         navigationController?.pushViewController(movieDetailsViewController, animated: true)
     }

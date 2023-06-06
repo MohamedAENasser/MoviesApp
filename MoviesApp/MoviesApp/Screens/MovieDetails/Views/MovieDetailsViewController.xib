@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="containerView" destination="47p-qh-nLo" id="3IB-Hb-WUg"/>
                 <outlet property="genresStackView" destination="AgE-qS-WJw" id="o29-JF-WAl"/>
+                <outlet property="movieImageView" destination="I2f-Fg-VtO" id="niv-mX-W9t"/>
                 <outlet property="overviewLabel" destination="Meq-GF-9qZ" id="0Ce-V6-MlE"/>
                 <outlet property="ratingLabel" destination="gYv-ae-9F5" id="4Rw-gB-i2E"/>
                 <outlet property="releaseDataLabel" destination="e0n-ql-1gj" id="j4W-8k-FSq"/>

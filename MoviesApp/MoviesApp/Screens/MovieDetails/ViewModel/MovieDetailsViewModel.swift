@@ -10,21 +10,28 @@ import Combine
 import UIKit
 
 class MovieDetailsViewModel {
-    private var movieID: String
+    private var movieModel: Movie
     private var service: MovieDetailsServiceProtocol
+    private var imageLoader: ImageLoader
+    private var imageURLString = ""
     @Published var detailsModel: MovieDetails?
+    @Published var image: UIImage?
 
-    init(movieID: String, service: MovieDetailsServiceProtocol = MovieDetailsService()) {
+    init(movieModel: Movie, service: MovieDetailsServiceProtocol = MovieDetailsService(), imageLoader: ImageLoader = ImageLoader()) {
+        self.movieModel = movieModel
         self.service = service
-        self.movieID = movieID
+        self.imageLoader = imageLoader
+
+        setupBindings()
     }
 
     func loadDetails() {
         Task {
-            let result = await service.getMovieDetails(id: movieID)
+            let result = await service.getMovieDetails(id: String(movieModel.id))
             switch result {
             case .success(let model):
                 detailsModel = model
+                requestImage()
             case .failure:
                 break // TODO: Error Handling
             }
@@ -49,5 +56,27 @@ class MovieDetailsViewModel {
 
     func getGenres() -> [MovieDetails.Genre] {
         Array(detailsModel?.genres.prefix(3) ?? [])
+    }
+
+    func requestImage() {
+        Task {
+            let result = await service.getImageURL(at: movieModel.posterPath)
+            switch result {
+            case .success(let urlString):
+                imageURLString = urlString
+                image = imageLoader.getImage(urlString: imageURLString)
+            case .failure:
+                break // TODO: Error Handling
+            }
+        }
+    }
+
+    private func setupBindings() {
+        imageLoader.didUpdateImagesList = { [weak self] in
+            guard let self = self else { return }
+            if self.image == nil {
+                self.image = self.imageLoader.getImage(urlString: self.imageURLString)
+            }
+        }
     }
 }

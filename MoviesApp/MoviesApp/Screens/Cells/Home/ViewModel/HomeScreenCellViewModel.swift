@@ -9,10 +9,10 @@ import UIKit
 import Combine
 
 class HomeScreenCellViewModel {
-    var model: Movie
-    var service: HomeScreenServiceProtocol
-    var imageLoader: ImageLoader
-    var imageURLString = ""
+    private var model: Movie
+    private var service: HomeScreenServiceProtocol
+    private var imageLoader: ImageLoader
+    private var imageURLString = ""
     @Published var image: UIImage?
 
     init(model: Movie, service: HomeScreenServiceProtocol = HomeScreenService(), imageLoader: ImageLoader = ImageLoader()) {

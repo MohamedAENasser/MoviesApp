@@ -8,14 +8,15 @@
 import Foundation
 
 struct MovieDetails: Codable {
-    var genres: [Genre]
-    var releaseDate: String
-    var title: String
-    var voteAverage: Double
-    var overview: String
+    let genres: [Genre]
+    let releaseDate: String
+    let title: String
+    let voteAverage: Double
+    let overview: String
+    let posterPath: String?
 
     private enum CodingKeys: String, CodingKey {
-        case genres, title, overview
+        case genres, title, overview, posterPath
         case releaseDate = "release_date"
         case voteAverage = "vote_average"
     }

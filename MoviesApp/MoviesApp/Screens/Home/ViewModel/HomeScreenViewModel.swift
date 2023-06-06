@@ -34,9 +34,4 @@ class HomeScreenViewModel {
     func movie(at index: Int) -> Movie? {
         moviesList[safe: index]
     }
-
-    func movieID(at index: Int) -> String? {
-        guard let id = moviesList[safe: index]?.id else { return nil }
-        return String(id)
-    }
 }

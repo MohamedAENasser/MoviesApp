@@ -12,6 +12,7 @@ protocol MainServiceProtocol {
     var provider: MoyaProvider<MoviesTarget> { get set }
 
     func setupConfigurationIfNeeded() async -> AppError?
+    func getImageURL(at path: String) async -> Result<String, AppError>
 }
 
 class MainService: MainServiceProtocol {
@@ -47,5 +48,13 @@ class MainService: MainServiceProtocol {
 
             }
         }
+    }
+
+    func getImageURL(at path: String) async -> Result<String, AppError> {
+        if let error = await setupConfigurationIfNeeded() {
+            return .failure(error)
+        }
+
+        return .success(MoviesTarget.imagesBaseURL.appending(path))
     }
 }

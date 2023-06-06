@@ -10,7 +10,6 @@ import Moya
 
 protocol HomeScreenServiceProtocol: MainServiceProtocol {
     func getMovies() async -> Result<[Movie], AppError>
-    func getImageURL(at path: String) async -> Result<String, AppError>
 }
 
 final class HomeScreenService: MainService, HomeScreenServiceProtocol {
@@ -35,14 +34,6 @@ final class HomeScreenService: MainService, HomeScreenServiceProtocol {
 
             }
         }
-    }
-
-    func getImageURL(at path: String) async -> Result<String, AppError> {
-        if let error = await setupConfigurationIfNeeded() {
-            return .failure(error)
-        }
-
-        return .success(MoviesTarget.imagesBaseURL.appending(path))
     }
 
 }

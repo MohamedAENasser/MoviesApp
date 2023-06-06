@@ -11,6 +11,7 @@ import Combine
 class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var genresStackView: UIStackView!
+    @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
@@ -18,10 +19,10 @@ class MovieDetailsViewController: UIViewController {
 
     var viewModel: MovieDetailsViewModel?
 
-    init(movieID: String) {
+    init(movieModel: Movie) {
         super.init(nibName: Constants.NibNames.movieDetailsViewController, bundle: .main)
 
-        viewModel = MovieDetailsViewModel(movieID: movieID)
+        viewModel = MovieDetailsViewModel(movieModel: movieModel)
     }
 
     required init?(coder: NSCoder) {
@@ -55,6 +56,16 @@ class MovieDetailsViewController: UIViewController {
             receiveValue: { [weak self] _ in
                 guard let self else { return }
                 self.setupUI()
+            })
+        )
+
+
+        viewModel?.$image.subscribe(Subscribers.Sink(
+            receiveCompletion: { _ in },
+            receiveValue: { image in
+                DispatchQueue.main.async {
+                    self.movieImageView.image = image
+                }
             })
         )
     }
