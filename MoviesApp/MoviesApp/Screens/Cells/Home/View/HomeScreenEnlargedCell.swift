@@ -9,12 +9,12 @@ import UIKit
 import Combine
 
 class HomeScreenEnlargedCell: UICollectionViewCell, NibLoadableView {
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var originalTitleLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var informationContainerView: UIView!
 
     var viewModel: HomeScreenCellViewModel?
 
@@ -27,14 +27,18 @@ class HomeScreenEnlargedCell: UICollectionViewCell, NibLoadableView {
     func configure(with model: Movie) {
         viewModel = HomeScreenCellViewModel(model: model)
         setupBindings()
+        setupUI()
         guard let viewModel else { return }
 
         viewModel.requestImage()
         titleLabel.text = viewModel.getTitle()
-        originalTitleLabel.text = viewModel.getOriginalTitle()
         releaseDateLabel.text = viewModel.getReleaseDate()
         ratingLabel.text = viewModel.getRating()
-        overviewLabel.text = viewModel.getOverview()
+    }
+
+    private func setupUI() {
+        containerView.layer.cornerRadius = 6
+        containerView.layer.shadowOffset = .init(width: 10, height: 10)
     }
 
     private func setupBindings() {

@@ -47,7 +47,6 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let space: CGFloat = 16
         let collectionWidth = collectionView.frame.size.width
-        return CGSize(width: collectionWidth - space, height: 0)
-
+        return CGSize(width: collectionWidth - space, height: (view.window?.bounds.height ?? 1000) / 6)
     }
 }

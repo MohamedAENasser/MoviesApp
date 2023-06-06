@@ -27,24 +27,12 @@ class HomeScreenCellViewModel {
         model.title ?? ""
     }
 
-    func getOriginalTitle() -> String {
-        if model.originalTitle != model.title && !(model.originalTitle?.isEmpty ?? true) {
-            return "(Original: \(model.originalTitle ?? ""))"
-        } else {
-            return ""
-        }
-    }
-
     func getReleaseDate() -> String {
         String(model.releaseDate?.prefix(4) ?? "")
     }
 
     func getRating() -> String {
         String(model.voteAverage ?? 0)
-    }
-
-    func getOverview() -> String {
-        String(model.overview ?? "")
     }
 
     func requestImage() {
