@@ -17,7 +17,8 @@ class HomeScreenViewModel {
     private var didReachLastPage: Bool {
         currentPage == totalPages
     }
-    @Published var moviesList: [Movie] = []
+    private var moviesList: [Movie] = []
+    @Published var status: AppStatus<[Movie]> = .loading
 
     init(service: HomeScreenServiceProtocol = HomeScreenService()) {
         self.service = service
@@ -29,6 +30,7 @@ class HomeScreenViewModel {
         case .success(let response):
             totalPages = response.totalPages ?? 0
             moviesList.append(contentsOf: response.results)
+            status = .success(moviesList)
         case .failure:
             break // TODO: Error Handling
         }
@@ -44,17 +46,32 @@ class HomeScreenViewModel {
     }
 
     func numberOfItems() -> Int {
-        var moviesCount = moviesList.count
-        if currentPage != totalPages { // Adding loading cell if didn't reach latest page
-            moviesCount += 1 // The extra one is for loading cell
+        switch status {
+
+        case .loading:
+            return 10
+
+        case .success(let moviesList):
+            var moviesCount = moviesList.count
+            if currentPage != totalPages { // Adding loading cell if didn't reach latest page
+                moviesCount += 1 // The extra one is for loading cell
+            }
+            return moviesCount
+
         }
-        return moviesCount
     }
 
     func shouldAddLoader(at index: Int) -> Bool {
-        guard !didReachLastPage else { return false }
+        switch status {
 
-        return index == moviesList.count
+        case .loading:
+            return false
+
+        case .success(let moviesList):
+            guard !didReachLastPage else { return false }
+            return index == moviesList.count
+
+        }
     }
 
     func movie(at index: Int) -> Movie? {

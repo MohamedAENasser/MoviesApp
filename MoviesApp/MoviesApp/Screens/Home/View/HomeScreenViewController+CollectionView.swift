@@ -13,20 +13,31 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if viewModel.shouldAddLoader(at: indexPath.row) {
-            return getLoadingCell(at: indexPath)
-        } else {
-            return getHomeScreenEnlargedCell(at: indexPath)
+        switch viewModel.status {
+        case .loading:
+            return getHomeScreenEnlargedShimmerCell(at: indexPath)
+
+        case .success:
+            if viewModel.shouldAddLoader(at: indexPath.row) {
+                return getLoadingCell(at: indexPath)
+            } else {
+                return getHomeScreenEnlargedCell(at: indexPath)
+            }
         }
     }
 
-    private func getHomeScreenEnlargedCell(at indexPath: IndexPath) -> HomeScreenEnlargedShimmerCell {
+    private func getHomeScreenEnlargedShimmerCell(at indexPath: IndexPath) -> HomeScreenEnlargedShimmerCell {
         let cell: HomeScreenEnlargedShimmerCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+        return cell
+    }
 
-//        guard let model = viewModel.movie(at: indexPath.row) else {
-//            return cell
-//        }
-//        cell.configure(with: model)
+    private func getHomeScreenEnlargedCell(at indexPath: IndexPath) -> HomeScreenEnlargedCell {
+        let cell: HomeScreenEnlargedCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+
+        guard let model = viewModel.movie(at: indexPath.row) else {
+            return cell
+        }
+        cell.configure(with: model)
 
         return cell
     }

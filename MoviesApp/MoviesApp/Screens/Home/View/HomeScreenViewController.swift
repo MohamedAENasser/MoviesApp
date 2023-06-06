@@ -39,7 +39,7 @@ class HomeScreenViewController: UIViewController {
     }
 
     private func setupBindings() {
-        viewModel.$moviesList.subscribe(Subscribers.Sink(
+        viewModel.$status.subscribe(Subscribers.Sink(
             receiveCompletion: { _ in },
             receiveValue: { _ in
                 self.reloadCollectionData()
