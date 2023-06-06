@@ -60,7 +60,8 @@ class MovieDetailsViewModel {
 
     func requestImage() {
         Task {
-            let result = await service.getImageURL(at: movieModel.posterPath)
+            guard let path = movieModel.posterPath else { return }
+            let result = await service.getImageURL(at: path)
             switch result {
             case .success(let urlString):
                 imageURLString = urlString

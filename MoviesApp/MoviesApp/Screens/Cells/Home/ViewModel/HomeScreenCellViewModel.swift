@@ -24,32 +24,33 @@ class HomeScreenCellViewModel {
     }
 
     func getTitle() -> String {
-        model.title
+        model.title ?? ""
     }
 
     func getOriginalTitle() -> String {
-        if model.originalTitle != model.title && !model.originalTitle.isEmpty {
-            return "(Original: \(model.originalTitle))"
+        if model.originalTitle != model.title && !(model.originalTitle?.isEmpty ?? true) {
+            return "(Original: \(model.originalTitle ?? ""))"
         } else {
             return ""
         }
     }
 
     func getReleaseDate() -> String {
-        String(model.releaseDate.prefix(4))
+        String(model.releaseDate?.prefix(4) ?? "")
     }
 
     func getRating() -> String {
-        String(model.voteAverage)
+        String(model.voteAverage ?? 0)
     }
 
     func getOverview() -> String {
-        String(model.overview)
+        String(model.overview ?? "")
     }
 
     func requestImage() {
+        guard let path = model.posterPath else { return }
         Task {
-            let result = await service.getImageURL(at: model.posterPath)
+            let result = await service.getImageURL(at: path)
             switch result {
             case .success(let urlString):
                 imageURLString = urlString

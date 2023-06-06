@@ -55,14 +55,19 @@ extension MoviesTarget: TargetType {
     }
 
     var task: Moya.Task {
+        var parameters: [String: Any] = [
+            "api_key" : MoviesTarget.apiKey
+        ]
         switch self {
 
+        case .moviesList:
+            // TODO: pages handling
         default:
-            return .requestParameters(parameters: [
-                "api_key" : MoviesTarget.apiKey
-            ], encoding: URLEncoding.queryString)
+            break
 
         }
+
+        return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
     }
 
     var headers: [String : String]? {
