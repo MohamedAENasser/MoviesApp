@@ -13,6 +13,8 @@
                 <outlet property="containerView" destination="47p-qh-nLo" id="3IB-Hb-WUg"/>
                 <outlet property="genresStackView" destination="AgE-qS-WJw" id="o29-JF-WAl"/>
                 <outlet property="movieImageView" destination="I2f-Fg-VtO" id="niv-mX-W9t"/>
+                <outlet property="originalTitleLabel" destination="BdQ-z3-DGS" id="YOs-CW-Vkw"/>
+                <outlet property="originalTitleLabelHeightConstraint" destination="MKD-JD-JU5" id="Mz5-kA-Pju"/>
                 <outlet property="overviewLabel" destination="Meq-GF-9qZ" id="0Ce-V6-MlE"/>
                 <outlet property="ratingLabel" destination="gYv-ae-9F5" id="4Rw-gB-i2E"/>
                 <outlet property="releaseDataLabel" destination="e0n-ql-1gj" id="j4W-8k-FSq"/>
@@ -51,37 +53,46 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AgE-qS-WJw" userLabel="Genres Stack View">
+                                    <rect key="frame" x="16" y="595" width="361" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="8F7-wr-xKR"/>
+                                    </constraints>
+                                </stackView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="TUf-cT-ecW" userLabel="Star Image View">
-                                    <rect key="frame" x="16" y="605" width="25" height="25"/>
+                                    <rect key="frame" x="16" y="645" width="25" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="25" id="Gns-UE-HDS"/>
                                         <constraint firstAttribute="width" secondItem="TUf-cT-ecW" secondAttribute="height" id="zE6-qm-MTY"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYv-ae-9F5" userLabel="Rating Label">
-                                    <rect key="frame" x="46" y="607" width="42" height="21"/>
+                                    <rect key="frame" x="46" y="647" width="42" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0n-ql-1gj" userLabel="Release Date Label">
-                                    <rect key="frame" x="118" y="607" width="42" height="21"/>
+                                    <rect key="frame" x="118" y="647" width="42" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Meq-GF-9qZ" userLabel="Overview Label">
-                                    <rect key="frame" x="16.000000000000004" y="650" width="41.333333333333343" height="20.333333333333371"/>
+                                    <rect key="frame" x="16.000000000000004" y="690" width="41.333333333333343" height="146"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AgE-qS-WJw" userLabel="Genres Stack View">
-                                    <rect key="frame" x="16" y="555" width="361" height="40"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BdQ-z3-DGS" userLabel="Original Title Label">
+                                    <rect key="frame" x="16" y="553" width="48" height="21"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="8F7-wr-xKR"/>
+                                        <constraint firstAttribute="height" constant="21" id="MKD-JD-JU5"/>
                                     </constraints>
-                                </stackView>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <viewLayoutGuide key="safeArea" id="gvi-P9-eMA"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -93,10 +104,11 @@
                                 <constraint firstItem="I2f-Fg-VtO" firstAttribute="width" secondItem="47p-qh-nLo" secondAttribute="width" multiplier="0.7" id="JJ3-au-ZcE"/>
                                 <constraint firstItem="kAv-pa-7CA" firstAttribute="leading" secondItem="47p-qh-nLo" secondAttribute="leading" constant="16" id="LJ1-wv-5c8"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="I2f-Fg-VtO" secondAttribute="trailing" constant="10" id="OMe-Og-Wzi"/>
+                                <constraint firstItem="oUs-3m-HdC" firstAttribute="bottom" secondItem="BdQ-z3-DGS" secondAttribute="top" id="PZB-fz-Snt"/>
                                 <constraint firstItem="oUs-3m-HdC" firstAttribute="leading" secondItem="47p-qh-nLo" secondAttribute="leading" constant="16" id="Q2Z-wf-K4A"/>
                                 <constraint firstItem="e0n-ql-1gj" firstAttribute="centerY" secondItem="gYv-ae-9F5" secondAttribute="centerY" id="QQW-P6-LoL"/>
                                 <constraint firstItem="AgE-qS-WJw" firstAttribute="leading" secondItem="oUs-3m-HdC" secondAttribute="leading" id="QXy-6V-Afh"/>
-                                <constraint firstItem="AgE-qS-WJw" firstAttribute="top" secondItem="oUs-3m-HdC" secondAttribute="bottom" constant="10" id="Shq-iK-vWT"/>
+                                <constraint firstItem="gvi-P9-eMA" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BdQ-z3-DGS" secondAttribute="trailing" constant="10" id="U3V-8f-HPU"/>
                                 <constraint firstItem="oUs-3m-HdC" firstAttribute="top" secondItem="kAv-pa-7CA" secondAttribute="bottom" constant="10" id="UdA-jz-ejU"/>
                                 <constraint firstItem="gYv-ae-9F5" firstAttribute="leading" secondItem="TUf-cT-ecW" secondAttribute="trailing" constant="5" id="VlX-dw-0LR"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AgE-qS-WJw" secondAttribute="trailing" constant="16" id="bTg-FF-GhN"/>
@@ -106,7 +118,9 @@
                                 <constraint firstAttribute="trailing" secondItem="kAv-pa-7CA" secondAttribute="trailing" constant="16" id="i6o-uI-5Z8"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="e0n-ql-1gj" secondAttribute="trailing" constant="16" id="iIP-Zj-1Nr"/>
                                 <constraint firstItem="TUf-cT-ecW" firstAttribute="leading" secondItem="oUs-3m-HdC" secondAttribute="leading" id="iyD-I1-93g"/>
+                                <constraint firstItem="AgE-qS-WJw" firstAttribute="top" secondItem="BdQ-z3-DGS" secondAttribute="bottom" constant="10" id="lTx-dY-WOW"/>
                                 <constraint firstItem="Meq-GF-9qZ" firstAttribute="leading" secondItem="oUs-3m-HdC" secondAttribute="leading" id="lVx-We-tgq"/>
+                                <constraint firstItem="BdQ-z3-DGS" firstAttribute="leading" secondItem="oUs-3m-HdC" secondAttribute="leading" id="lkH-2C-FMp"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Meq-GF-9qZ" secondAttribute="trailing" constant="16" id="raS-J2-CEW"/>
                                 <constraint firstItem="TUf-cT-ecW" firstAttribute="top" secondItem="AgE-qS-WJw" secondAttribute="bottom" constant="10" id="wcm-XD-a3D"/>
                                 <constraint firstItem="I2f-Fg-VtO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="47p-qh-nLo" secondAttribute="leading" constant="10" id="x4m-m5-6Iw"/>

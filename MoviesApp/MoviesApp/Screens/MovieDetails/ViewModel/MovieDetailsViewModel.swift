@@ -42,6 +42,16 @@ class MovieDetailsViewModel {
         detailsModel?.title ?? ""
     }
 
+    func getOriginalTitle() -> String? {
+        guard let originalTitle = detailsModel?.originalTitle,
+            !originalTitle.isEmpty,
+            originalTitle != detailsModel?.title else {
+                return nil
+        }
+
+        return "(Original: \(originalTitle))"
+    }
+
     func getOverview() -> String {
         detailsModel?.overview ?? ""
     }

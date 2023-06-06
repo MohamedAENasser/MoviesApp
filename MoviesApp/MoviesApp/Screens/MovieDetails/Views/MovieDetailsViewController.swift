@@ -13,6 +13,8 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var genresStackView: UIStackView!
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var originalTitleLabel: UILabel!
+    @IBOutlet weak var originalTitleLabelHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var releaseDataLabel: UILabel!
@@ -41,6 +43,13 @@ class MovieDetailsViewController: UIViewController {
             guard let viewModel = self.viewModel else { return }
 
             self.titleLabel.text =  viewModel.getTitle()
+            if let originalTitle = viewModel.getOriginalTitle() {
+                self.originalTitleLabel.text =  originalTitle
+                self.originalTitleLabelHeightConstraint.isActive = false
+            } else {
+                self.originalTitleLabelHeightConstraint.constant = 0
+                self.originalTitleLabelHeightConstraint.isActive = true
+            }
             self.overviewLabel.text =  viewModel.getOverview()
             self.ratingLabel.text =  viewModel.getRating()
             self.releaseDataLabel.text =  viewModel.getReleaseData()
