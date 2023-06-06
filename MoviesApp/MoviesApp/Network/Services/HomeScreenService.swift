@@ -9,12 +9,12 @@ import Foundation
 import Moya
 
 protocol HomeScreenServiceProtocol: MainServiceProtocol {
-    func getMovies(page: Int) async -> Result<[Movie], AppError>
+    func getMovies(page: Int) async -> Result<MoviesResponse, AppError>
 }
 
 final class HomeScreenService: MainService, HomeScreenServiceProtocol {
 
-    func getMovies(page: Int) async -> Result<[Movie], AppError> {
+    func getMovies(page: Int) async -> Result<MoviesResponse, AppError> {
         return await withCheckedContinuation { continuation in
             provider.request(.moviesList(page)) { result in
 
@@ -22,7 +22,7 @@ final class HomeScreenService: MainService, HomeScreenServiceProtocol {
 
                 case .success(let response):
                     do {
-                        try continuation.resume(returning: .success(response.map(MoviesResponse.self).results))
+                        try continuation.resume(returning: .success(response.map(MoviesResponse.self)))
                     } catch {
                         return continuation.resume(returning: .failure(.failedToParseData))
                     }

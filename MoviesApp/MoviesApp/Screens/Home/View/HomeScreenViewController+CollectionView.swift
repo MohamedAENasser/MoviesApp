@@ -9,15 +9,18 @@ import UIKit
 
 extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.numberOfItems() + 1 // The extra one is for loading cell
+        viewModel.numberOfItems()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard indexPath.row != viewModel.numberOfItems() else {
-            let loadingCell: LoadingCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-            return loadingCell
+        if viewModel.shouldAddLoader(at: indexPath.row) {
+            return getLoadingCell(at: indexPath)
+        } else {
+            return getHomeScreenEnlargedCell(at: indexPath)
         }
+    }
 
+    private func getHomeScreenEnlargedCell(at indexPath: IndexPath) -> HomeScreenEnlargedCell {
         let cell: HomeScreenEnlargedCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
 
         guard let model = viewModel.movie(at: indexPath.row) else {
@@ -28,6 +31,11 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
 
+    private func getLoadingCell(at indexPath: IndexPath) -> LoadingCell {
+        let loadingCell: LoadingCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+        return loadingCell
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let movieModel = viewModel.movie(at: indexPath.row) else { return }
         let movieDetailsViewController = MovieDetailsViewController(movieModel: movieModel)
@@ -36,7 +44,7 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.numberOfItems() {
+        if viewModel.shouldAddLoader(at: indexPath.row) {
             Task {
                 await viewModel.loadMoreMovies()
             }
