@@ -17,6 +17,8 @@
 		CF5CB2332A2FED0000ECC21E /* MovieDetailsShimmerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5CB2322A2FED0000ECC21E /* MovieDetailsShimmerView.xib */; };
 		CF5CB2362A2FF52000ECC21E /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB2352A2FF52000ECC21E /* ErrorView.swift */; };
 		CF5CB2382A2FF52E00ECC21E /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5CB2372A2FF52E00ECC21E /* ErrorView.xib */; };
+		CF5CB23C2A2FFAE000ECC21E /* HomeScreenErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB23A2A2FFAE000ECC21E /* HomeScreenErrorCell.swift */; };
+		CF5CB23D2A2FFAE000ECC21E /* HomeScreenErrorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5CB23B2A2FFAE000ECC21E /* HomeScreenErrorCell.xib */; };
 		CFC75AFB2A2CE3D300D7F86D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC75AFA2A2CE3D300D7F86D /* AppDelegate.swift */; };
 		CFC75AFD2A2CE3D300D7F86D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC75AFC2A2CE3D300D7F86D /* SceneDelegate.swift */; };
 		CFC75B042A2CE3D500D7F86D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC75B032A2CE3D500D7F86D /* Assets.xcassets */; };
@@ -63,6 +65,8 @@
 		CF5CB2322A2FED0000ECC21E /* MovieDetailsShimmerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailsShimmerView.xib; sourceTree = "<group>"; };
 		CF5CB2352A2FF52000ECC21E /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		CF5CB2372A2FF52E00ECC21E /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		CF5CB23A2A2FFAE000ECC21E /* HomeScreenErrorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenErrorCell.swift; sourceTree = "<group>"; };
+		CF5CB23B2A2FFAE000ECC21E /* HomeScreenErrorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreenErrorCell.xib; sourceTree = "<group>"; };
 		CFC75AF72A2CE3D300D7F86D /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC75AFA2A2CE3D300D7F86D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFC75AFC2A2CE3D300D7F86D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +164,15 @@
 			children = (
 				CF5CB2352A2FF52000ECC21E /* ErrorView.swift */,
 				CF5CB2372A2FF52E00ECC21E /* ErrorView.xib */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		CF5CB2392A2FFAC200ECC21E /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				CF5CB23A2A2FFAE000ECC21E /* HomeScreenErrorCell.swift */,
+				CF5CB23B2A2FFAE000ECC21E /* HomeScreenErrorCell.xib */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -321,6 +334,7 @@
 		CFC75B3F2A2CE9CF00D7F86D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CF5CB2392A2FFAC200ECC21E /* Error */,
 				CF5CB2202A2FCFC600ECC21E /* Shimmer */,
 				CFC75B352A2CE63A00D7F86D /* View */,
 				CFC75B3E2A2CE9A100D7F86D /* ViewModel */,
@@ -426,6 +440,7 @@
 			files = (
 				CFC75B072A2CE3D500D7F86D /* LaunchScreen.storyboard in Resources */,
 				CFC75B3C2A2CE63A00D7F86D /* HomeScreenEnlargedCell.xib in Resources */,
+				CF5CB23D2A2FFAE000ECC21E /* HomeScreenErrorCell.xib in Resources */,
 				CF5CB2332A2FED0000ECC21E /* MovieDetailsShimmerView.xib in Resources */,
 				CF5CB2382A2FF52E00ECC21E /* ErrorView.xib in Resources */,
 				CFC75B3A2A2CE63A00D7F86D /* HomeScreen.storyboard in Resources */,
@@ -509,6 +524,7 @@
 				CFC75B292A2CE63100D7F86D /* Collection+SafeAccess.swift in Sources */,
 				CFC75B5C2A2E8CB500D7F86D /* MovieDetailsViewModel.swift in Sources */,
 				CFC75AFD2A2CE3D300D7F86D /* SceneDelegate.swift in Sources */,
+				CF5CB23C2A2FFAE000ECC21E /* HomeScreenErrorCell.swift in Sources */,
 				CF3C73C22A2F6F33000EDDD4 /* PosterModel.swift in Sources */,
 				CFC75B652A2EB4F000D7F86D /* LoadingCell.swift in Sources */,
 				CFC75B452A2CFAA800D7F86D /* MainService.swift in Sources */,

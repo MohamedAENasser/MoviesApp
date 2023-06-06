@@ -25,8 +25,18 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
             }
 
         case .error:
-            return UICollectionViewCell() // TODO: Udpate with error cell
+            return getHomeScreenErrorCell(at: indexPath)
         }
+    }
+
+    private func getHomeScreenErrorCell(at indexPath: IndexPath) -> HomeScreenErrorCell {
+        let cell: HomeScreenErrorCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+        cell.retryAction = { [weak self] in
+            Task {
+                await self?.viewModel.getMovies()
+            }
+        }
+        return cell
     }
 
     private func getHomeScreenEnlargedShimmerCell(at indexPath: IndexPath) -> HomeScreenEnlargedShimmerCell {
@@ -51,7 +61,8 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let movieModel = viewModel.movie(at: indexPath.row) else { return }
+        guard case .success = viewModel.status,
+            let movieModel = viewModel.movie(at: indexPath.row) else { return }
         let movieDetailsViewController = MovieDetailsViewController(movieModel: movieModel)
 
         navigationController?.pushViewController(movieDetailsViewController, animated: true)
@@ -69,6 +80,12 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let space: CGFloat = 16
         let collectionWidth = collectionView.frame.size.width
-        return CGSize(width: collectionWidth - space, height: (view.window?.bounds.height ?? 1000) / 6)
+        let screenHeight = (view.window?.bounds.height ?? 1000)
+        switch viewModel.status {
+        case .loading, .success:
+            return CGSize(width: collectionWidth - space, height: screenHeight / 6)
+        case .error:
+            return CGSize(width: collectionWidth - space, height: screenHeight / 2)
+        }
     }
 }

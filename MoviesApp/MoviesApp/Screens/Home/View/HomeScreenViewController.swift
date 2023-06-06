@@ -29,6 +29,7 @@ class HomeScreenViewController: UIViewController {
     private func registerCells() {
         collectionView.register(HomeScreenEnlargedCell.self)
         collectionView.register(HomeScreenEnlargedShimmerCell.self)
+        collectionView.register(HomeScreenErrorCell.self)
         collectionView.register(LoadingCell.self)
     }
 

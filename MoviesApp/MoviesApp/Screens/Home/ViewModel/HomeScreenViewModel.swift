@@ -59,7 +59,7 @@ class HomeScreenViewModel {
             return moviesCount
 
         case .error:
-            return 0
+            return 1
         }
     }
 
