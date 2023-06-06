@@ -27,6 +27,7 @@ class MovieDetailsViewModel {
     }
 
     func loadDetails() {
+        status = .loading
         Task {
             let result = await service.getMovieDetails(id: String(movieModel.id))
             switch result {
@@ -35,7 +36,7 @@ class MovieDetailsViewModel {
                 status = .success(model)
                 requestImage(resolution: .original)
             case .failure:
-                break // TODO: Error Handling
+                status = .error
             }
         }
     }

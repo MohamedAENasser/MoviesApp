@@ -32,7 +32,7 @@ class HomeScreenViewModel {
             moviesList.append(contentsOf: response.results)
             status = .success(moviesList)
         case .failure:
-            break // TODO: Error Handling
+            status = .error
         }
         isLoading = false
     }
@@ -58,13 +58,15 @@ class HomeScreenViewModel {
             }
             return moviesCount
 
+        case .error:
+            return 0
         }
     }
 
     func shouldAddLoader(at index: Int) -> Bool {
         switch status {
 
-        case .loading:
+        case .loading, .error:
             return false
 
         case .success(let moviesList):

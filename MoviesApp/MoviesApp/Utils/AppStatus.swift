@@ -9,5 +9,6 @@ import Foundation
 
 enum AppStatus<T> {
     case loading
+    case error
     case success(T)
 }

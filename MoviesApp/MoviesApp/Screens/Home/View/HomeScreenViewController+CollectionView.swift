@@ -23,6 +23,9 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
             } else {
                 return getHomeScreenEnlargedCell(at: indexPath)
             }
+
+        case .error:
+            return UICollectionViewCell() // TODO: Udpate with error cell
         }
     }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieDetailsShimmerView: UIView, NibLoadableView {
+class MovieDetailsShimmerView: UIView {
     @IBOutlet var shimmerContainerViews: [UIView]!
 
     override func awakeFromNib() {

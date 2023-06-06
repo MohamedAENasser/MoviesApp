@@ -25,6 +25,14 @@ class MovieDetailsViewController: UIViewController {
         Bundle.main.loadNibNamed("MovieDetailsShimmerView", owner: nil)?.first as? MovieDetailsShimmerView ?? MovieDetailsShimmerView(frame: .zero)
     }()
 
+    lazy var errorView: ErrorView = {
+        let errorView = Bundle.main.loadNibNamed("ErrorView", owner: nil)?.first as? ErrorView ?? ErrorView(frame: .zero)
+        errorView.retryAction = { [weak self] in
+            self?.viewModel?.loadDetails()
+        }
+        return errorView
+    }()
+
     init(movieModel: Movie) {
         super.init(nibName: Constants.NibNames.movieDetailsViewController, bundle: .main)
 
@@ -75,16 +83,27 @@ class MovieDetailsViewController: UIViewController {
         shimmerView.fill(in: containerView)
     }
 
+    private func setupError() {
+        containerView.addSubview(errorView)
+        errorView.fill(in: containerView)
+    }
+
     private func setupBindings() {
         viewModel?.$status.subscribe(Subscribers.Sink(
             receiveCompletion: { _ in },
             receiveValue: { [weak self] status in
                 guard let self else { return }
-                switch status {
-                case .loading:
-                    self.setupShimmer()
-                case .success:
-                    self.setupSuccessUI()
+                DispatchQueue.main.async {
+                    switch status {
+                    case .loading:
+                        self.setupShimmer()
+
+                    case .success:
+                        self.setupSuccessUI()
+
+                    case .error:
+                        self.setupError()
+                    }
                 }
             })
         )
