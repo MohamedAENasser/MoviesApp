@@ -83,11 +83,10 @@ class MovieDetailsViewModel {
     }
 
     private func setupBindings() {
-        imageLoader.didUpdateImagesList = { [weak self] in
+        imageLoader.didUpdateImagesList = { [weak self] urlString in
             guard let self = self else { return }
-            if self.image == nil {
-                self.image = self.imageLoader.getImage(urlString: self.imageURLString)
-            }
+            guard urlString == self.imageURLString, self.image == nil else { return }
+            self.image = self.imageLoader.getImage(urlString: self.imageURLString)
         }
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 class ImageLoader {
     static var cachedImagesList: [String: UIImage] = [:]
     private var imageDownloadQueue: Set<String> = []
-    var didUpdateImagesList: () -> Void = {}
+    var didUpdateImagesList: (_ url: String) -> Void = { _ in }
 
     func getImage(urlString: String) -> UIImage? {
         let cachedImage = ImageLoader.cachedImagesList[urlString]
@@ -33,7 +33,7 @@ class ImageLoader {
 
             ImageLoader.cachedImagesList[urlString] = UIImage(data: data)
             imageDownloadQueue.remove(urlString)
-            self.didUpdateImagesList()
+            self.didUpdateImagesList(urlString)
         }.resume()
     }
 }
