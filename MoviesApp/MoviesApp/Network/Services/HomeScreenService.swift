@@ -12,7 +12,7 @@ protocol HomeScreenServiceProtocol: MainServiceProtocol {
     func getMovies(page: Int) async -> Result<MoviesResponse, AppError>
 }
 
-final class HomeScreenService: MainService, HomeScreenServiceProtocol {
+class HomeScreenService: MainService, HomeScreenServiceProtocol {
 
     func getMovies(page: Int) async -> Result<MoviesResponse, AppError> {
         return await withCheckedContinuation { continuation in

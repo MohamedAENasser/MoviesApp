@@ -76,7 +76,14 @@ extension MoviesTarget: TargetType {
         ]
     }
 
+    // MARK: - Stubs
+    static var stubFilePath = ""
     var sampleData: Data {
-       Data()
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: MoviesTarget.stubFilePath), options: .mappedIfSafe)
+            return data
+        } catch {
+            return Data()
+        }
     }
 }

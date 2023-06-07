@@ -7,4 +7,10 @@ target 'MoviesApp' do
 
   pod 'Moya'
 
+  target 'MoviesAppTests' do
+    inherit! :search_paths
+
+    pod 'Moya'
+  end
+
 end

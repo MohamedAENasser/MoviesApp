@@ -11,7 +11,7 @@ import Combine
 class HomeScreenViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
-    let viewModel: HomeScreenViewModel = HomeScreenViewModel()
+    var viewModel: HomeScreenViewModel = HomeScreenViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
