@@ -17,9 +17,7 @@ final class HomeScreenViewControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        let homeScreenStoryboard = UIStoryboard(name: Constants.StoryBoardIDs.homeScreen, bundle: .main)
-        viewController = try? XCTUnwrap(homeScreenStoryboard.instantiateViewController(withIdentifier: Constants.ViewControllerIDs.homeScreenViewController) as? HomeScreenViewController)
-
+        viewController = UIViewController.instantiateFromStoryboard(storyboardName: Constants.StoryBoardIDs.homeScreen)
         service = HomeScreenService(provider: MoyaProvider<MoviesTarget>(stubClosure: MoyaProvider.immediatelyStub))
         viewController.viewModel = HomeScreenViewModel(service: service)
         _ = viewController.view

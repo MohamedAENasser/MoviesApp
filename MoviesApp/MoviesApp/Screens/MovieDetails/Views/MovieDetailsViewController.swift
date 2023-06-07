@@ -12,7 +12,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var genresStackView: UIStackView!
     @IBOutlet weak var movieImageView: UIImageView!
-    @IBOutlet weak var movieImageShimmerContainerView: UIView!
+    @IBOutlet weak var movieImageShimmerView: ShimmerView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var originalTitleLabel: UILabel!
     @IBOutlet weak var originalTitleLabelHeightConstraint: NSLayoutConstraint!
@@ -22,11 +22,12 @@ class MovieDetailsViewController: UIViewController {
 
     var viewModel: MovieDetailsViewModel?
     lazy var shimmerView: MovieDetailsShimmerView = {
-        Bundle.main.loadNibNamed("MovieDetailsShimmerView", owner: nil)?.first as? MovieDetailsShimmerView ?? MovieDetailsShimmerView(frame: .zero)
+        let shimmerView: MovieDetailsShimmerView = UIView.loadFromNib()
+        return shimmerView
     }()
 
     lazy var errorView: ErrorView = {
-        let errorView = Bundle.main.loadNibNamed("ErrorView", owner: nil)?.first as? ErrorView ?? ErrorView(frame: .zero)
+        let errorView: ErrorView = ErrorView.loadFromNib()
         errorView.retryAction = { [weak self] in
             self?.viewModel?.loadDetails()
         }
@@ -74,10 +75,7 @@ class MovieDetailsViewController: UIViewController {
     }
 
     private func setupShimmer() {
-        let imageShimmer = ShimmerView()
-        movieImageShimmerContainerView.addSubview(imageShimmer)
-        imageShimmer.fill(in: movieImageShimmerContainerView)
-        imageShimmer.startAnimating()
+        movieImageShimmerView.startAnimating()
 
         containerView.addSubview(shimmerView)
         shimmerView.fill(in: containerView)
@@ -114,8 +112,8 @@ class MovieDetailsViewController: UIViewController {
             receiveValue: { image in
                 guard let image else { return }
                 DispatchQueue.main.async {
-                    self.movieImageShimmerContainerView.subviews.forEach { $0.removeFromSuperview() }
-                    self.movieImageShimmerContainerView.isHidden = true
+                    self.movieImageShimmerView.stopAnimation()
+                    self.movieImageShimmerView.isHidden = true
                     self.movieImageView.image = image
                 }
             })

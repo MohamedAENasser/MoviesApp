@@ -11,6 +11,8 @@
 		CF059F192A30BB1D00820CBB /* Error.json in Resources */ = {isa = PBXBuildFile; fileRef = CF059F182A30BB1D00820CBB /* Error.json */; };
 		CF059F1C2A30BB9600820CBB /* HomeScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF059F1B2A30BB9600820CBB /* HomeScreenViewModelTests.swift */; };
 		CF059F1E2A30BEE400820CBB /* XCTestCase+Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF059F1D2A30BEE400820CBB /* XCTestCase+Stubs.swift */; };
+		CF059F202A30C34B00820CBB /* UIViewController+InstantiateFromStrotyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF059F1F2A30C34B00820CBB /* UIViewController+InstantiateFromStrotyboard.swift */; };
+		CF059F222A30CC5800820CBB /* UIView+LoadFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF059F212A30CC5800820CBB /* UIView+LoadFromNib.swift */; };
 		CF3C73C22A2F6F33000EDDD4 /* PosterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3C73C12A2F6F33000EDDD4 /* PosterModel.swift */; };
 		CF5CB21F2A2FCEB100ECC21E /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB21E2A2FCEB100ECC21E /* ShimmerView.swift */; };
 		CF5CB2292A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB2272A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.swift */; };
@@ -78,6 +80,8 @@
 		CF059F182A30BB1D00820CBB /* Error.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Error.json; sourceTree = "<group>"; };
 		CF059F1B2A30BB9600820CBB /* HomeScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModelTests.swift; sourceTree = "<group>"; };
 		CF059F1D2A30BEE400820CBB /* XCTestCase+Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Stubs.swift"; sourceTree = "<group>"; };
+		CF059F1F2A30C34B00820CBB /* UIViewController+InstantiateFromStrotyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+InstantiateFromStrotyboard.swift"; sourceTree = "<group>"; };
+		CF059F212A30CC5800820CBB /* UIView+LoadFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LoadFromNib.swift"; sourceTree = "<group>"; };
 		CF3C73C12A2F6F33000EDDD4 /* PosterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterModel.swift; sourceTree = "<group>"; };
 		CF5CB21E2A2FCEB100ECC21E /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 		CF5CB2272A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenEnlargedShimmerCell.swift; sourceTree = "<group>"; };
@@ -339,6 +343,8 @@
 				CFC75B262A2CE63100D7F86D /* Collection+SafeAccess.swift */,
 				CFC75B272A2CE63100D7F86D /* UICollectionView+Registeration.swift */,
 				CF5CB22B2A2FD61200ECC21E /* UIView+FillInParent.swift */,
+				CF059F1F2A30C34B00820CBB /* UIViewController+InstantiateFromStrotyboard.swift */,
+				CF059F212A30CC5800820CBB /* UIView+LoadFromNib.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -686,11 +692,13 @@
 				CFC75B5C2A2E8CB500D7F86D /* MovieDetailsViewModel.swift in Sources */,
 				CFC75AFD2A2CE3D300D7F86D /* SceneDelegate.swift in Sources */,
 				CF5CB23C2A2FFAE000ECC21E /* HomeScreenErrorCell.swift in Sources */,
+				CF059F202A30C34B00820CBB /* UIViewController+InstantiateFromStrotyboard.swift in Sources */,
 				CF3C73C22A2F6F33000EDDD4 /* PosterModel.swift in Sources */,
 				CFC75B652A2EB4F000D7F86D /* LoadingCell.swift in Sources */,
 				CFC75B452A2CFAA800D7F86D /* MainService.swift in Sources */,
 				CFC75B412A2CE9EF00D7F86D /* HomeScreenCellViewModel.swift in Sources */,
 				CF5CB21F2A2FCEB100ECC21E /* ShimmerView.swift in Sources */,
+				CF059F222A30CC5800820CBB /* UIView+LoadFromNib.swift in Sources */,
 				CFC75B2A2A2CE63100D7F86D /* UICollectionView+Registeration.swift in Sources */,
 				CFC75B5E2A2E8CE700D7F86D /* MovieDetailsService.swift in Sources */,
 				CFC75B3B2A2CE63A00D7F86D /* HomeScreenViewController.swift in Sources */,

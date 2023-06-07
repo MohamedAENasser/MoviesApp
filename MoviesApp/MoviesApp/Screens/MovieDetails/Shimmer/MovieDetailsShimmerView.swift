@@ -7,17 +7,12 @@
 
 import UIKit
 
-class MovieDetailsShimmerView: UIView {
-    @IBOutlet var shimmerContainerViews: [UIView]!
+class MovieDetailsShimmerView: UIView, NibLoadableView {
+    @IBOutlet var shimmerViews: [ShimmerView]!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        shimmerContainerViews.forEach { view in
-            let shimmerView = ShimmerView()
-            shimmerView.fill(in: view)
-
-            shimmerView.startAnimating()
-        }
+        shimmerViews.forEach { $0.startAnimating() }
     }
 }

@@ -9,18 +9,12 @@ import UIKit
 
 class HomeScreenEnlargedShimmerCell: UICollectionViewCell, NibLoadableView {
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet var shimmerContainerViews: [UIView]!
+    @IBOutlet var shimmerViews: [ShimmerView]!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         containerView.layer.cornerRadius = 6
-        shimmerContainerViews.forEach { view in
-            let shimmerView = ShimmerView()
-            shimmerView.fill(in: view)
-
-            shimmerView.startAnimating()
-        }
+        shimmerViews.forEach { $0.startAnimating() }
     }
-
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol NibLoadableView: AnyObject {
+protocol NibLoadableView: UIView {
     static var nibName: String { get }
 }
 

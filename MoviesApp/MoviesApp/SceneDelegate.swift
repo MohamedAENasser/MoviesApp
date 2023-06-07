@@ -18,9 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
 
-        let homeScreenStoryboard = UIStoryboard(name: Constants.StoryBoardIDs.homeScreen, bundle: .main)
-        let homeScreenViewController = homeScreenStoryboard.instantiateViewController(withIdentifier: Constants.ViewControllerIDs.homeScreenViewController)
-
+        let homeScreenViewController: HomeScreenViewController = UIViewController.instantiateFromStoryboard(storyboardName: Constants.StoryBoardIDs.homeScreen)
         window?.rootViewController = UINavigationController(rootViewController: homeScreenViewController)
     }
 

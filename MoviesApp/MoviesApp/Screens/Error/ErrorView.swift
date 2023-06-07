@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ErrorView: UIView {
+class ErrorView: UIView, NibLoadableView {
     var retryAction: ()->Void = {}
 
     @IBAction func didTapRetryButton(_ sender: UIButton) {

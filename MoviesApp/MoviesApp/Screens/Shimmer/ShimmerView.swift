@@ -48,4 +48,7 @@ class ShimmerView: UIView {
         gradientLayer.add(animation, forKey: animation.keyPath)
     }
 
+    func stopAnimation() {
+        gradientLayer.removeAllAnimations()
+    }
 }
