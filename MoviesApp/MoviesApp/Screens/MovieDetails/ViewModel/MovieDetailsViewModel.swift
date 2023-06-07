@@ -12,13 +12,13 @@ import UIKit
 class MovieDetailsViewModel {
     private var movieModel: Movie
     private var service: MovieDetailsServiceProtocol
-    private var imageLoader: ImageLoader
+    private var imageLoader: ImageLoaderProtocol
     private var imageURLString = ""
     private var detailsModel: MovieDetails?
     @Published  var status: AppStatus<MovieDetails> = .loading
     @Published var image: UIImage?
 
-    init(movieModel: Movie, service: MovieDetailsServiceProtocol = MovieDetailsService(), imageLoader: ImageLoader = ImageLoader()) {
+    init(movieModel: Movie, service: MovieDetailsServiceProtocol = MovieDetailsService(), imageLoader: ImageLoaderProtocol = ImageLoader()) {
         self.movieModel = movieModel
         self.service = service
         self.imageLoader = imageLoader

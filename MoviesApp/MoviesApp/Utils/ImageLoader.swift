@@ -7,7 +7,12 @@
 
 import UIKit
 
-class ImageLoader {
+protocol ImageLoaderProtocol {
+    var didUpdateImagesList: (_ url: String) -> Void { get set }
+    func getImage(urlString: String) -> UIImage?
+}
+
+class ImageLoader: ImageLoaderProtocol {
     static var cachedImagesList: [String: UIImage] = [:]
     private var imageDownloadQueue: Set<String> = []
     var didUpdateImagesList: (_ url: String) -> Void = { _ in }
