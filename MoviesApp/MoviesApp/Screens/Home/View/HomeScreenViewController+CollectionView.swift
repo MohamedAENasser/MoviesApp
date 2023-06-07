@@ -99,8 +99,7 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         let screenHeight = (view.window?.bounds.height ?? 1000)
 
         let compactCellSize = CGSize(width: (collectionWidth - largePadding) / 2, height: screenHeight / 2.5)
-        let largeCellSize = CGSize(width: collectionWidth - smallPadding, height: screenHeight / 6)
-
+        let largeCellSize = CGSize(width: collectionWidth - (smallPadding * 2), height: screenHeight / 6)
         switch viewModel.status {
         case .success:
             if viewModel.shouldAddLoader(at: indexPath.row) {
