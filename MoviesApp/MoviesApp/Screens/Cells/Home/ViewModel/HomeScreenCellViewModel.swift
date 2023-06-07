@@ -44,7 +44,7 @@ class HomeScreenCellViewModel {
                 imageURLString = urlString
                 image = imageLoader.getImage(urlString: imageURLString)
             case .failure:
-                break // TODO: Error Handling
+                image = UIImage(named: "no-thumbnail")
             }
         }
     }
