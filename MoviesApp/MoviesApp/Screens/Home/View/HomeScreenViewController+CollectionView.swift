@@ -69,8 +69,8 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
 
-    private func getLoadingCell(at indexPath: IndexPath) -> LoadingCell {
-        let loadingCell: LoadingCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+    private func getLoadingCell(at indexPath: IndexPath) -> LoaderCell {
+        let loadingCell: LoaderCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
         return loadingCell
     }
 

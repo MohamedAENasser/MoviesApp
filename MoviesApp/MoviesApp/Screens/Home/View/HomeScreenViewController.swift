@@ -50,7 +50,7 @@ class HomeScreenViewController: UIViewController {
         collectionView.register(HomeScreenCompactShimmerCell.self)
 
         // Loading
-        collectionView.register(LoadingCell.self)
+        collectionView.register(LoaderCell.self)
 
         // Error
         collectionView.register(HomeScreenErrorCell.self)

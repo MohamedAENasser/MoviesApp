@@ -1,5 +1,5 @@
 //
-//  LoadingCell.swift
+//  LoaderCell.swift
 //  MoviesApp
 //
 //  Created by Mohamed Abd ElNasser on 06/06/2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoadingCell: UICollectionViewCell {
+class LoaderCell: UICollectionViewCell {
 
     var indicator : UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
