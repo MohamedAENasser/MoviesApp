@@ -33,6 +33,10 @@
                                     <constraint firstAttribute="width" secondItem="kVb-cc-75v" secondAttribute="height" multiplier="2:3" id="okA-BP-Jdm"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GBf-8L-WXq" customClass="ShimmerView" customModule="MoviesApp" customModuleProvider="target">
+                                <rect key="frame" x="15.999999999999993" y="10" width="117.33333333333331" height="176"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cV0-3t-8nA" userLabel="Information Container View">
                                 <rect key="frame" x="153.33333333333337" y="56.999999999999993" width="184.66666666666663" height="82.333333333333314"/>
                                 <subviews>
@@ -97,12 +101,16 @@
                             <constraint firstAttribute="trailing" secondItem="cV0-3t-8nA" secondAttribute="trailing" constant="10" id="0iF-YH-p8f"/>
                             <constraint firstItem="kVb-cc-75v" firstAttribute="leading" secondItem="Z4o-XU-GTY" secondAttribute="leading" constant="16" id="1Pm-VP-WIQ"/>
                             <constraint firstItem="CuA-ey-gC5" firstAttribute="leading" secondItem="Z4o-XU-GTY" secondAttribute="leading" constant="20" id="1eG-MU-2gJ"/>
+                            <constraint firstItem="GBf-8L-WXq" firstAttribute="bottom" secondItem="kVb-cc-75v" secondAttribute="bottom" id="2iN-y4-Yam"/>
                             <constraint firstAttribute="trailing" secondItem="CuA-ey-gC5" secondAttribute="trailing" constant="20" id="CE8-sP-le7"/>
                             <constraint firstItem="CuA-ey-gC5" firstAttribute="top" secondItem="Z4o-XU-GTY" secondAttribute="top" id="Osj-qF-Yng"/>
+                            <constraint firstItem="GBf-8L-WXq" firstAttribute="leading" secondItem="kVb-cc-75v" secondAttribute="leading" id="Wu6-3o-Cxg"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cV0-3t-8nA" secondAttribute="bottom" constant="10" id="YW4-Uk-NHr"/>
                             <constraint firstItem="kVb-cc-75v" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Z4o-XU-GTY" secondAttribute="top" constant="10" id="bWf-Se-4Pl"/>
                             <constraint firstItem="cV0-3t-8nA" firstAttribute="leading" secondItem="kVb-cc-75v" secondAttribute="trailing" constant="20" id="e81-fS-2vF"/>
+                            <constraint firstItem="GBf-8L-WXq" firstAttribute="trailing" secondItem="kVb-cc-75v" secondAttribute="trailing" id="eKE-JZ-6LJ"/>
                             <constraint firstItem="cV0-3t-8nA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Z4o-XU-GTY" secondAttribute="top" constant="10" id="plc-rb-Bao"/>
+                            <constraint firstItem="GBf-8L-WXq" firstAttribute="top" secondItem="kVb-cc-75v" secondAttribute="top" id="v0M-Up-zqH"/>
                             <constraint firstItem="cV0-3t-8nA" firstAttribute="centerY" secondItem="Z4o-XU-GTY" secondAttribute="centerY" id="xM6-sW-MpN"/>
                             <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="kVb-cc-75v" secondAttribute="bottom" constant="10" id="xdQ-6n-Zgw"/>
                             <constraint firstItem="kVb-cc-75v" firstAttribute="centerY" secondItem="Z4o-XU-GTY" secondAttribute="centerY" id="ydd-Hd-Zls"/>
@@ -120,6 +128,7 @@
             <connections>
                 <outlet property="containerView" destination="Z4o-XU-GTY" id="Fec-u7-IX7"/>
                 <outlet property="informationContainerView" destination="cV0-3t-8nA" id="63j-Te-HNt"/>
+                <outlet property="movieImageShimmerView" destination="GBf-8L-WXq" id="nDq-42-Cj8"/>
                 <outlet property="movieImageView" destination="kVb-cc-75v" id="zQV-sW-Dmu"/>
                 <outlet property="ratingLabel" destination="nKa-4F-9Ln" id="dqh-9f-mEG"/>
                 <outlet property="releaseDateLabel" destination="6Ne-Tb-bYJ" id="iXr-FM-NfK"/>
@@ -138,6 +147,9 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

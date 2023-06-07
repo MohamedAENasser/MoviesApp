@@ -11,6 +11,7 @@ import Combine
 class HomeScreenEnlargedCell: UICollectionViewCell, HomeScreenCellProtocol, NibLoadableView {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var movieImageView: UIImageView!
+    @IBOutlet weak var movieImageShimmerView: ShimmerView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
@@ -39,6 +40,10 @@ class HomeScreenEnlargedCell: UICollectionViewCell, HomeScreenCellProtocol, NibL
     private func setupUI() {
         containerView.layer.cornerRadius = 6
         containerView.layer.shadowOffset = .init(width: 10, height: 10)
+
+        // Setup Shimmer
+        movieImageShimmerView.startAnimating()
+        movieImageShimmerView.isHidden = false
     }
 
     private func setupBindings() {
@@ -46,6 +51,8 @@ class HomeScreenEnlargedCell: UICollectionViewCell, HomeScreenCellProtocol, NibL
             receiveCompletion: { _ in },
             receiveValue: { image in
                 DispatchQueue.main.async {
+                    self.movieImageShimmerView.stopAnimation()
+                    self.movieImageShimmerView.isHidden = true
                     self.movieImageView.image = image
                 }
             })
