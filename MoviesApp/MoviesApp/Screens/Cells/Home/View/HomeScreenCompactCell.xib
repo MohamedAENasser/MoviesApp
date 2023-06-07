@@ -55,6 +55,11 @@
                                     <constraint firstItem="HgB-td-zEP" firstAttribute="top" secondItem="oMN-KB-xtC" secondAttribute="top" constant="5" id="gKI-Ho-TVD"/>
                                     <constraint firstItem="qrI-ja-WOf" firstAttribute="centerY" secondItem="HgB-td-zEP" secondAttribute="centerY" id="wtF-I3-CBr"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray4Color"/>

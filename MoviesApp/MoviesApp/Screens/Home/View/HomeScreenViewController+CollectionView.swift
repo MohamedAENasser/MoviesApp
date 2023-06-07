@@ -103,7 +103,11 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
 
         switch viewModel.status {
         case .success:
-            return collectionStyle == .list ? largeCellSize : compactCellSize
+            if viewModel.shouldAddLoader(at: indexPath.row) {
+                return largeCellSize
+            } else {
+                return collectionStyle == .list ? largeCellSize : compactCellSize
+            }
         case .loading:
             return collectionStyle == .list ? largeCellSize : compactCellSize
         case .error:
