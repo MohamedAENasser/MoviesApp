@@ -41,13 +41,19 @@ class HomeScreenViewController: UIViewController {
     }
 
     private func registerCells() {
+        // Enlarged
         collectionView.register(HomeScreenEnlargedCell.self)
         collectionView.register(HomeScreenEnlargedShimmerCell.self)
-        collectionView.register(HomeScreenErrorCell.self)
 
+        // Compact
         collectionView.register(HomeScreenCompactCell.self)
+        collectionView.register(HomeScreenCompactShimmerCell.self)
 
+        // Loading
         collectionView.register(LoadingCell.self)
+
+        // Error
+        collectionView.register(HomeScreenErrorCell.self)
     }
 
     private func getMovies() {

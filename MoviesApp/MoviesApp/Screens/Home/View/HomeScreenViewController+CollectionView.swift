@@ -15,7 +15,7 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch viewModel.status {
         case .loading:
-            return getHomeScreenEnlargedShimmerCell(at: indexPath)
+            return getHomeScreenShimmerCell(at: indexPath)
 
         case .success:
             if viewModel.shouldAddLoader(at: indexPath.row) {
@@ -39,8 +39,15 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
 
-    private func getHomeScreenEnlargedShimmerCell(at indexPath: IndexPath) -> HomeScreenEnlargedShimmerCell {
-        let cell: HomeScreenEnlargedShimmerCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+    private func getHomeScreenShimmerCell(at indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: UICollectionViewCell
+        if collectionStyle == .list {
+            let enlargedCell: HomeScreenEnlargedShimmerCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            cell = enlargedCell
+        } else {
+            let compactCell: HomeScreenCompactShimmerCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            cell = compactCell
+        }
         return cell
     }
 
@@ -98,7 +105,7 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         case .success:
             return collectionStyle == .list ? largeCellSize : compactCellSize
         case .loading:
-            return largeCellSize
+            return collectionStyle == .list ? largeCellSize : compactCellSize
         case .error:
             return CGSize(width: largeCellSize.width, height: compactCellSize.height)
         }

@@ -17,6 +17,8 @@
 		CF059F262A30D75F00820CBB /* HomeScreenCompactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF059F242A30D75F00820CBB /* HomeScreenCompactCell.xib */; };
 		CF059F282A311B7000820CBB /* HomeScreenStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF059F272A311B7000820CBB /* HomeScreenStyle.swift */; };
 		CF059F2A2A311CAE00820CBB /* HomeScreenCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF059F292A311CAE00820CBB /* HomeScreenCellProtocol.swift */; };
+		CF059F2D2A31219F00820CBB /* HomeScreenCompactShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF059F2B2A31219F00820CBB /* HomeScreenCompactShimmerCell.swift */; };
+		CF059F2E2A31219F00820CBB /* HomeScreenCompactShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF059F2C2A31219F00820CBB /* HomeScreenCompactShimmerCell.xib */; };
 		CF3C73C22A2F6F33000EDDD4 /* PosterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3C73C12A2F6F33000EDDD4 /* PosterModel.swift */; };
 		CF5CB21F2A2FCEB100ECC21E /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB21E2A2FCEB100ECC21E /* ShimmerView.swift */; };
 		CF5CB2292A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB2272A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.swift */; };
@@ -90,6 +92,8 @@
 		CF059F242A30D75F00820CBB /* HomeScreenCompactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreenCompactCell.xib; sourceTree = "<group>"; };
 		CF059F272A311B7000820CBB /* HomeScreenStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenStyle.swift; sourceTree = "<group>"; };
 		CF059F292A311CAE00820CBB /* HomeScreenCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCellProtocol.swift; sourceTree = "<group>"; };
+		CF059F2B2A31219F00820CBB /* HomeScreenCompactShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCompactShimmerCell.swift; sourceTree = "<group>"; };
+		CF059F2C2A31219F00820CBB /* HomeScreenCompactShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreenCompactShimmerCell.xib; sourceTree = "<group>"; };
 		CF3C73C12A2F6F33000EDDD4 /* PosterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterModel.swift; sourceTree = "<group>"; };
 		CF5CB21E2A2FCEB100ECC21E /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 		CF5CB2272A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenEnlargedShimmerCell.swift; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 			children = (
 				CF5CB2272A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.swift */,
 				CF5CB2282A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.xib */,
+				CF059F2B2A31219F00820CBB /* HomeScreenCompactShimmerCell.swift */,
+				CF059F2C2A31219F00820CBB /* HomeScreenCompactShimmerCell.xib */,
 			);
 			path = Shimmer;
 			sourceTree = "<group>";
@@ -568,6 +574,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFC75B072A2CE3D500D7F86D /* LaunchScreen.storyboard in Resources */,
+				CF059F2E2A31219F00820CBB /* HomeScreenCompactShimmerCell.xib in Resources */,
 				CFC75B3C2A2CE63A00D7F86D /* HomeScreenEnlargedCell.xib in Resources */,
 				CF059F262A30D75F00820CBB /* HomeScreenCompactCell.xib in Resources */,
 				CF5CB23D2A2FFAE000ECC21E /* HomeScreenErrorCell.xib in Resources */,
@@ -681,6 +688,7 @@
 			files = (
 				CFC75B622A2EA91900D7F86D /* Constants.swift in Sources */,
 				CF059F252A30D75F00820CBB /* HomeScreenCompactCell.swift in Sources */,
+				CF059F2D2A31219F00820CBB /* HomeScreenCompactShimmerCell.swift in Sources */,
 				CFC75B552A2E4B8B00D7F86D /* MovieDetailsViewController.swift in Sources */,
 				CFC75B232A2CE62300D7F86D /* ReusableView.swift in Sources */,
 				CFC75B582A2E7E4700D7F86D /* GenreItemView.swift in Sources */,
