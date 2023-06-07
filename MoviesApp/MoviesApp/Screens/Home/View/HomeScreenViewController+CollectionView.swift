@@ -21,7 +21,7 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
             if viewModel.shouldAddLoader(at: indexPath.row) {
                 return getLoadingCell(at: indexPath)
             } else {
-                return getHomeScreenEnlargedCell(at: indexPath)
+                return getHomeScreenCell(at: indexPath)
             }
 
         case .error:
@@ -44,8 +44,15 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
 
-    private func getHomeScreenEnlargedCell(at indexPath: IndexPath) -> HomeScreenEnlargedCell {
-        let cell: HomeScreenEnlargedCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+    private func getHomeScreenCell(at indexPath: IndexPath) -> UICollectionViewCell {
+        var cell: HomeScreenCellProtocol
+        if collectionStyle == .list {
+            let largeCell: HomeScreenEnlargedCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            cell = largeCell
+        } else {
+            let compactCell: HomeScreenCompactCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            cell = compactCell
+        }
 
         guard let model = viewModel.movie(at: indexPath.row) else {
             return cell
@@ -78,14 +85,22 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
 
     // MARK: - Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let space: CGFloat = 16
+        let smallPadding: CGFloat = 20
+        let largePadding: CGFloat = 50
+
         let collectionWidth = collectionView.frame.size.width
         let screenHeight = (view.window?.bounds.height ?? 1000)
+
+        let compactCellSize = CGSize(width: (collectionWidth - largePadding) / 2, height: screenHeight / 2.5)
+        let largeCellSize = CGSize(width: collectionWidth - smallPadding, height: screenHeight / 6)
+
         switch viewModel.status {
-        case .loading, .success:
-            return CGSize(width: collectionWidth - space, height: screenHeight / 6)
+        case .success:
+            return collectionStyle == .list ? largeCellSize : compactCellSize
+        case .loading:
+            return largeCellSize
         case .error:
-            return CGSize(width: collectionWidth - space, height: screenHeight / 2)
+            return CGSize(width: largeCellSize.width, height: compactCellSize.height)
         }
     }
 }

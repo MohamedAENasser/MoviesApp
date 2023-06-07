@@ -13,6 +13,10 @@
 		CF059F1E2A30BEE400820CBB /* XCTestCase+Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF059F1D2A30BEE400820CBB /* XCTestCase+Stubs.swift */; };
 		CF059F202A30C34B00820CBB /* UIViewController+InstantiateFromStrotyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF059F1F2A30C34B00820CBB /* UIViewController+InstantiateFromStrotyboard.swift */; };
 		CF059F222A30CC5800820CBB /* UIView+LoadFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF059F212A30CC5800820CBB /* UIView+LoadFromNib.swift */; };
+		CF059F252A30D75F00820CBB /* HomeScreenCompactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF059F232A30D75F00820CBB /* HomeScreenCompactCell.swift */; };
+		CF059F262A30D75F00820CBB /* HomeScreenCompactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF059F242A30D75F00820CBB /* HomeScreenCompactCell.xib */; };
+		CF059F282A311B7000820CBB /* HomeScreenStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF059F272A311B7000820CBB /* HomeScreenStyle.swift */; };
+		CF059F2A2A311CAE00820CBB /* HomeScreenCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF059F292A311CAE00820CBB /* HomeScreenCellProtocol.swift */; };
 		CF3C73C22A2F6F33000EDDD4 /* PosterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3C73C12A2F6F33000EDDD4 /* PosterModel.swift */; };
 		CF5CB21F2A2FCEB100ECC21E /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB21E2A2FCEB100ECC21E /* ShimmerView.swift */; };
 		CF5CB2292A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CB2272A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.swift */; };
@@ -82,6 +86,10 @@
 		CF059F1D2A30BEE400820CBB /* XCTestCase+Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Stubs.swift"; sourceTree = "<group>"; };
 		CF059F1F2A30C34B00820CBB /* UIViewController+InstantiateFromStrotyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+InstantiateFromStrotyboard.swift"; sourceTree = "<group>"; };
 		CF059F212A30CC5800820CBB /* UIView+LoadFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LoadFromNib.swift"; sourceTree = "<group>"; };
+		CF059F232A30D75F00820CBB /* HomeScreenCompactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCompactCell.swift; sourceTree = "<group>"; };
+		CF059F242A30D75F00820CBB /* HomeScreenCompactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreenCompactCell.xib; sourceTree = "<group>"; };
+		CF059F272A311B7000820CBB /* HomeScreenStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenStyle.swift; sourceTree = "<group>"; };
+		CF059F292A311CAE00820CBB /* HomeScreenCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCellProtocol.swift; sourceTree = "<group>"; };
 		CF3C73C12A2F6F33000EDDD4 /* PosterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterModel.swift; sourceTree = "<group>"; };
 		CF5CB21E2A2FCEB100ECC21E /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 		CF5CB2272A2FD0E600ECC21E /* HomeScreenEnlargedShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenEnlargedShimmerCell.swift; sourceTree = "<group>"; };
@@ -384,6 +392,7 @@
 				CFC75B332A2CE63A00D7F86D /* HomeScreenViewController.swift */,
 				CFC75B302A2CE63A00D7F86D /* HomeScreenViewController+CollectionView.swift */,
 				CFC75B312A2CE63A00D7F86D /* HomeScreen.storyboard */,
+				CF059F272A311B7000820CBB /* HomeScreenStyle.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -400,8 +409,11 @@
 		CFC75B352A2CE63A00D7F86D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CF059F292A311CAE00820CBB /* HomeScreenCellProtocol.swift */,
 				CFC75B362A2CE63A00D7F86D /* HomeScreenEnlargedCell.xib */,
 				CFC75B372A2CE63A00D7F86D /* HomeScreenEnlargedCell.swift */,
+				CF059F232A30D75F00820CBB /* HomeScreenCompactCell.swift */,
+				CF059F242A30D75F00820CBB /* HomeScreenCompactCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -557,6 +569,7 @@
 			files = (
 				CFC75B072A2CE3D500D7F86D /* LaunchScreen.storyboard in Resources */,
 				CFC75B3C2A2CE63A00D7F86D /* HomeScreenEnlargedCell.xib in Resources */,
+				CF059F262A30D75F00820CBB /* HomeScreenCompactCell.xib in Resources */,
 				CF5CB23D2A2FFAE000ECC21E /* HomeScreenErrorCell.xib in Resources */,
 				CF5CB2332A2FED0000ECC21E /* MovieDetailsShimmerView.xib in Resources */,
 				CF5CB2382A2FF52E00ECC21E /* ErrorView.xib in Resources */,
@@ -667,6 +680,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFC75B622A2EA91900D7F86D /* Constants.swift in Sources */,
+				CF059F252A30D75F00820CBB /* HomeScreenCompactCell.swift in Sources */,
 				CFC75B552A2E4B8B00D7F86D /* MovieDetailsViewController.swift in Sources */,
 				CFC75B232A2CE62300D7F86D /* ReusableView.swift in Sources */,
 				CFC75B582A2E7E4700D7F86D /* GenreItemView.swift in Sources */,
@@ -679,6 +693,7 @@
 				CF5CB2362A2FF52000ECC21E /* ErrorView.swift in Sources */,
 				CFC75B1F2A2CE49A00D7F86D /* HomeScreenService.swift in Sources */,
 				CFC75AFB2A2CE3D300D7F86D /* AppDelegate.swift in Sources */,
+				CF059F282A311B7000820CBB /* HomeScreenStyle.swift in Sources */,
 				CFC75B282A2CE63100D7F86D /* UICollectionViewCell+ReusableView.swift in Sources */,
 				CFC75B602A2E8D2900D7F86D /* MovieDetails.swift in Sources */,
 				CF5CB2312A2FECF300ECC21E /* MovieDetailsShimmerView.swift in Sources */,
@@ -691,6 +706,7 @@
 				CFC75B292A2CE63100D7F86D /* Collection+SafeAccess.swift in Sources */,
 				CFC75B5C2A2E8CB500D7F86D /* MovieDetailsViewModel.swift in Sources */,
 				CFC75AFD2A2CE3D300D7F86D /* SceneDelegate.swift in Sources */,
+				CF059F2A2A311CAE00820CBB /* HomeScreenCellProtocol.swift in Sources */,
 				CF5CB23C2A2FFAE000ECC21E /* HomeScreenErrorCell.swift in Sources */,
 				CF059F202A30C34B00820CBB /* UIViewController+InstantiateFromStrotyboard.swift in Sources */,
 				CF3C73C22A2F6F33000EDDD4 /* PosterModel.swift in Sources */,

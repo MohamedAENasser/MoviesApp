@@ -10,8 +10,10 @@ import Combine
 
 class HomeScreenViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var viewStylingButton: UIButton!
 
     var viewModel: HomeScreenViewModel = HomeScreenViewModel()
+    var collectionStyle: HomeScreenStyle = .list
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,14 +24,29 @@ class HomeScreenViewController: UIViewController {
         getMovies()
     }
 
+    @IBAction func viewStyleButtonDidPress(_ sender: UIButton) {
+        if collectionStyle == .list {
+            collectionStyle = .compact
+            viewStylingButton.setImage(UIImage(systemName: HomeScreenStyle.list.iconName), for: .normal)
+        } else {
+            collectionStyle = .list
+            viewStylingButton.setImage(UIImage(systemName: HomeScreenStyle.compact.iconName), for: .normal)
+        }
+        reloadCollectionData()
+    }
+
     private func setupUI() {
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 40, left: 20, bottom: 30, right: 20)
+        viewStylingButton.setImage(UIImage(systemName: HomeScreenStyle.compact.iconName), for: .normal)
     }
 
     private func registerCells() {
         collectionView.register(HomeScreenEnlargedCell.self)
         collectionView.register(HomeScreenEnlargedShimmerCell.self)
         collectionView.register(HomeScreenErrorCell.self)
+
+        collectionView.register(HomeScreenCompactCell.self)
+
         collectionView.register(LoadingCell.self)
     }
 
@@ -48,7 +65,7 @@ class HomeScreenViewController: UIViewController {
         )
     }
 
-    private func reloadCollectionData(index: Int? = nil) {
+    private func reloadCollectionData() {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }

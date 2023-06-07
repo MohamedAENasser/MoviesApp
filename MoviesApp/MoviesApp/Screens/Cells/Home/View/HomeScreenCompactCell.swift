@@ -1,20 +1,17 @@
 //
-//  HomeScreenEnlargedCell.swift
+//  HomeScreenCompactCell.swift
 //  MoviesApp
 //
-//  Created by Mohamed Abd ElNasser on 03/06/2023.
+//  Created by Mohamed Abd ElNasser on 07/06/2023.
 //
 
 import UIKit
 import Combine
 
-class HomeScreenEnlargedCell: UICollectionViewCell, HomeScreenCellProtocol, NibLoadableView {
+class HomeScreenCompactCell: UICollectionViewCell, HomeScreenCellProtocol, NibLoadableView {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var releaseDateLabel: UILabel!
-    @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var informationContainerView: UIView!
 
     var viewModel: HomeScreenCellViewModel?
 
@@ -32,8 +29,6 @@ class HomeScreenEnlargedCell: UICollectionViewCell, HomeScreenCellProtocol, NibL
 
         viewModel.requestImage()
         titleLabel.text = viewModel.getTitle()
-        releaseDateLabel.text = viewModel.getReleaseDate()
-        ratingLabel.text = viewModel.getRating()
     }
 
     private func setupUI() {
@@ -51,4 +46,5 @@ class HomeScreenEnlargedCell: UICollectionViewCell, HomeScreenCellProtocol, NibL
             })
         )
     }
+
 }
