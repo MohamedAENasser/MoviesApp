@@ -12,6 +12,7 @@ class HomeScreenCompactCell: UICollectionViewCell, HomeScreenCellProtocol, NibLo
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
 
     var viewModel: HomeScreenCellViewModel?
 
@@ -29,6 +30,7 @@ class HomeScreenCompactCell: UICollectionViewCell, HomeScreenCellProtocol, NibLo
 
         viewModel.requestImage()
         titleLabel.text = viewModel.getTitle()
+        ratingLabel.text = viewModel.getRating()
     }
 
     private func setupUI() {

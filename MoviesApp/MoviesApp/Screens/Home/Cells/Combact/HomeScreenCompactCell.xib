@@ -88,6 +88,7 @@
             <connections>
                 <outlet property="containerView" destination="ngK-C5-OFi" id="6n7-j8-3P4"/>
                 <outlet property="movieImageView" destination="ouP-LK-oc9" id="sfR-f1-0nl"/>
+                <outlet property="ratingLabel" destination="qrI-ja-WOf" id="GCc-g2-X3X"/>
                 <outlet property="titleLabel" destination="ada-ai-dyr" id="E6k-TO-6ch"/>
             </connections>
             <point key="canvasLocation" x="483.20610687022901" y="269.36619718309862"/>
