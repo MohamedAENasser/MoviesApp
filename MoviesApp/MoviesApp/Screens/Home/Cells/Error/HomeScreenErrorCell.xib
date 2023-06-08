@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeScreenErrorCell" customModule="MoviesApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="558" height="278"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="558" height="278"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scf-Px-VeE">
+                        <rect key="frame" x="0.0" y="0.0" width="558" height="278"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="VPO-gR-Bsb">
+                                <rect key="frame" x="229" y="89.666666666666686" width="100" height="99"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="VPO-gR-Bsb" secondAttribute="height" constant="1" id="D89-Y0-4Fq"/>
+                                    <constraint firstAttribute="width" constant="100" id="aIR-l5-P4L"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5nb-1b-T3k">
+                                <rect key="frame" x="246.66666666666666" y="198.66666666666666" width="64.666666666666657" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Retry"/>
+                                <connections>
+                                    <action selector="didTapRetryButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="vJ0-eL-acf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5nb-1b-T3k" firstAttribute="top" secondItem="VPO-gR-Bsb" secondAttribute="bottom" constant="10" id="6I2-k1-K1l"/>
+                            <constraint firstItem="VPO-gR-Bsb" firstAttribute="centerX" secondItem="scf-Px-VeE" secondAttribute="centerX" id="gQi-t5-3kq"/>
+                            <constraint firstItem="VPO-gR-Bsb" firstAttribute="centerY" secondItem="scf-Px-VeE" secondAttribute="centerY" id="o4E-zD-teT"/>
+                            <constraint firstItem="5nb-1b-T3k" firstAttribute="centerX" secondItem="scf-Px-VeE" secondAttribute="centerX" id="zH6-cY-fmW"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="scf-Px-VeE" secondAttribute="bottom" id="29n-RO-1Es"/>
+                <constraint firstItem="scf-Px-VeE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="MS2-tq-1Qp"/>
+                <constraint firstAttribute="trailing" secondItem="scf-Px-VeE" secondAttribute="trailing" id="VAa-uz-S73"/>
+                <constraint firstItem="scf-Px-VeE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="jV0-nK-lYa"/>
+            </constraints>
+            <size key="customSize" width="558" height="278"/>
+            <point key="canvasLocation" x="517.55725190839689" y="69.014084507042256"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="warning" width="2000" height="2000"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

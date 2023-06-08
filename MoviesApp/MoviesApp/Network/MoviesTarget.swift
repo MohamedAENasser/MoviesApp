@@ -10,7 +10,9 @@ import Moya
 enum MoviesTarget {
     static private let apiKey = "API_KEY"
 
-    case moviesList
+    case moviesList(_ page: Int)
+    case configuration
+    case movieDetails(_ id: String)
 }
 
 extension MoviesTarget: TargetType {
@@ -20,6 +22,11 @@ extension MoviesTarget: TargetType {
         case .moviesList:
             return URL(string: "https://api.themoviedb.org/3/discover")!
 
+        case .configuration:
+            return URL(string: "https://api.themoviedb.org/3/configuration")!
+
+        case .movieDetails:
+            return URL(string: "https://api.themoviedb.org/3/movie")!
         }
     }
 
@@ -29,27 +36,37 @@ extension MoviesTarget: TargetType {
         case .moviesList:
             return "/movie"
 
+        case .configuration:
+            return ""
+
+        case .movieDetails(let id):
+            return "/\(id)"
         }
     }
 
     var method: Moya.Method {
         switch self {
 
-        case .moviesList:
+        default:
             return .get
 
         }
     }
 
     var task: Moya.Task {
+        var parameters: [String: Any] = [
+            "api_key" : MoviesTarget.apiKey
+        ]
         switch self {
 
-        case .moviesList:
-            return .requestParameters(parameters: [
-                "api_key" : MoviesTarget.apiKey
-            ], encoding: URLEncoding.queryString)
+        case .moviesList(let page):
+            parameters["page"] = page
+        default:
+            break
 
         }
+
+        return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
     }
 
     var headers: [String : String]? {
@@ -59,7 +76,14 @@ extension MoviesTarget: TargetType {
         ]
     }
 
+    // MARK: - Stubs
+    static var stubFilePath = ""
     var sampleData: Data {
-       Data()
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: MoviesTarget.stubFilePath), options: .mappedIfSafe)
+            return data
+        } catch {
+            return Data()
+        }
     }
 }
